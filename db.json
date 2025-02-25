@@ -1,100 +1,60 @@
 {
-  "peliculas": [
+  "users": [
     {
-      "id": "1",
-      "nombre": "El sexto sentido",
-      "director": "M. Night Shyamalan",
-      "clasificacion": "Drama"
+      "name": "usuario1",
+      "email": "usuario1@gmail.com",
+      "pass": "pass1",
+      "country": "Spain",
+      "score": 10
     },
     {
-      "id": "2",
-      "nombre": "Pulp Fiction",
-      "director": "Tarantino",
-      "clasificacion": "Acción"
+      "name": "usuario2",
+      "email": "usuario2@gmail.com",
+      "pass": "pass2",
+      "country": "France",
+      "score": 20
     },
     {
-      "id": "3",
-      "nombre": "Todo Sobre Mi Madre",
-      "director": "Almodobar",
-      "clasificacion": "Drama"
+      "name": "usuario3",
+      "email": "usuario3@gmail.com",
+      "pass": "pass3",
+      "country": "Honduras",
+      "score": 40
     },
     {
-      "id": "4",
-      "nombre": "300",
-      "director": "Zack Snyder",
-      "clasificacion": "Acción"
+      "name": "usuario4",
+      "email": "usuario4@gmail.com",
+      "pass": "pass4",
+      "country": "Colombia",
+      "score": 45
     },
     {
-      "id": "5",
-      "nombre": "El silencio de los corderos",
-      "director": "Jonathan Demme",
-      "clasificacion": "Drama"
+      "name": "usuario5",
+      "email": "usuario5@gmail.com",
+      "pass": "pass5",
+      "country": "Morocco",
+      "score": 10
     },
     {
-      "id": "6",
-      "nombre": "Forrest Gump",
-      "director": "Robert Zemeckis",
-      "clasificacion": "Comedia"
+      "name": "usuario6",
+      "email": "usuario6@gmail.com",
+      "pass": "pass6",
+      "country": "Italy",
+      "score": 0
     },
     {
-      "id": "7",
-      "nombre": "Las Hurdes",
-      "director": "Luis Buñuel",
-      "clasificacion": "Documental"
+      "name": "usuario7",
+      "email": "usuario7@gmail.com",
+      "pass": "pass7",
+      "country": "Spain",
+      "score": 18
     },
     {
-      "id": 15,
-      "nombre": "Tiburon",
-      "director": "Steven Spielberg",
-      "clasificacion": "Aventura"
-    },
-    {
-      "id": 15,
-      "nombre": "Tiburon",
-      "director": "Steven Spielberg",
-      "clasificacion": "Aventura"
-    },
-    {
-      "id": 15,
-      "nombre": "Tiburon",
-      "director": "Steven Spielberg",
-      "clasificacion": "Aventura"
-    },
-    {
-      "id": 15,
-      "nombre": "Tiburon",
-      "director": "Steven Spielberg",
-      "clasificacion": "Aventura"
-    },
-    {
-      "id": "17",
-      "nombre": "Poltergeist",
-      "director": "Tobe Hooper",
-      "clasificacion": "Terror"
-    },
-    {
-      "id": "20",
-      "nombre": "U-Boot",
-      "director": "W. Petersen",
-      "clasificacion": "Accion"
-    }
-  ],
-  "clasificaciones": [
-    {
-      "nombre": "Drama",
-      "id": "1"
-    },
-    {
-      "nombre": "Comedia",
-      "id": "2"
-    },
-    {
-      "nombre": "Documental",
-      "id": "3"
-    },
-    {
-      "nombre": "Acción",
-      "id": "4"
+      "name": "usuario8",
+      "email": "usuario8@gmail.com",
+      "pass": "pass8",
+      "country": "Germany",
+      "score": 15
     }
   ]
 }
