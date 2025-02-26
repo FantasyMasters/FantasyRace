@@ -1,34 +1,34 @@
 <template>
 
     <footer class="footer">
-        <div class="footer-top">
-            <div class="social-media">
-                <p>Síguenos en Redes</p>
-                    <div class="icons">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+        <div class="footer__top">
+            <div class="footer__social">
+                <p class="footer__social-title">Síguenos en Redes</p>
+                    <div class="footer__social-icons">
+                        <a href="#" class="footer__social-icon"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="footer__social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="footer__social-icon"><i class="fab fa-youtube"></i></a>
                     </div>
             </div>
             
-            <div class="logo">
-                <img src="@/assets/logo.svg" alt="FantasyRace Logo" />
+            <div class="footer__logo">
+                <img src="" alt="FantasyRace footer__logo" />
             </div>
-            <div class="links">
-                <a href="#">Faqs</a>
-                <a href="#">Url</a>
-                <a href="#">Contacta con Nosotros</a>
+            <div class="footer__links">
+                <a href="#" class="footer__link">Faqs</a>
+                <a href="#" class="footer__link">Url</a>
+                <a href="#" class="footer__link">Contacta con Nosotros</a>
             </div>
         </div>
 
-        <div class="footer-bottom">
-            <div class="legal">
-                <a href="#">P. de Privacidad</a>
-                <a href="#">Aviso Legal</a>
-                <a href="#">P. de Cookies</a>
-            </div>
-            <p>Copyright © 2025 FantasyRace.</p>
+        <div class="footer__bottom">
+      <div class="footer__legal">
+        <a href="#" class="footer__legal-link">P. de Privacidad</a>
+        <a href="#" class="footer__legal-link">Aviso Legal</a>
+        <a href="#" class="footer__legal-link">P. de Cookies</a>
       </div>
+      <p class="footer__copyright">Copyright © 2025 FantasyRace.</p>
+    </div>
     </footer>
 
 </template>
@@ -46,7 +46,7 @@
     padding: 20px 0;
   }
   
-  .footer-top {
+  .footer__top {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -55,41 +55,43 @@
     border-bottom: 1px solid #444;
   }
   
-  .social-media p {
+  .footer__social-title {
     font-size: 16px;
     font-weight: bold;
   }
   
-  .icons a {
+  .footer__social-icon {
     color: white;
     font-size: 20px;
     margin: 0 10px;
     text-decoration: none;
   }
   
-  .logo img {
+  .footer__logo img {
     height: 60px;
   }
   
-  .links a,
-  .legal a {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 14px;
-  }
+ .footer__link,
+.footer__legal-link {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer__legal {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.footer__copyright {
+  font-size: 12px;
+  margin-top: 10px;
+}
   
-  .legal {
-    margin-top: 10px;
-  }
-  
-  .footer-bottom p {
-    font-size: 12px;
-    margin-top: 10px;
-  }
-  
-  .icons a:hover,
-  .links a:hover,
+  .footer__social-icons a:hover,
+  .footer__links a:hover,
   .legal a:hover {
     color: red;
   }
