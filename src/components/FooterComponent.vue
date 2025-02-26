@@ -12,7 +12,7 @@
             </div>
             
             <div class="footer__logo">
-                <img src="" alt="FantasyRace footer__logo" />
+                <img src="/home/penascalf5/Documentos/App_Vue/FantasyRace/src/assets/logo.png" alt="FantasyRace footer__logo" />
             </div>
             <div class="footer__links">
                 <a href="#" class="footer__link">Faqs</a>
