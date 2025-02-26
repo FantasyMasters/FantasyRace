@@ -5,10 +5,12 @@
     
     <router-view></router-view>
   </div>
+  <Footer></Footer>
 </template>
 
 <script setup>
 import MenuComponent from './components/MenuComponent.vue';
+import Footer from './components/FooterComponent.vue'
 </script>
 
 <style>
