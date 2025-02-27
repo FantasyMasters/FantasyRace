@@ -1,4 +1,5 @@
 <template>
+  <MenuComponent />
     <div class="results-view">
       <h1 class="results-view__title">Race Results</h1>
       <ResultsComponent />
@@ -6,6 +7,7 @@
   </template>
   
   <script setup>
+  import MenuComponent from '../components/MenuComponent.vue';
   import ResultsComponent from '../components/ResultsComponent.vue';
   </script>
   

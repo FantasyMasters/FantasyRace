@@ -1,4 +1,5 @@
 <template>
+  <MenuComponent />
     <div class="years-view">
       <h1 class="years-view__title">Choose a year of Formula 1 competition</h1>
       <YearsComponent />
@@ -6,6 +7,7 @@
   </template>
   
   <script setup>
+  import MenuComponent from '../components/MenuComponent.vue';
   import YearsComponent from '../components/YearsComponent.vue';
   </script>
   

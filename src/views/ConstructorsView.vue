@@ -1,4 +1,5 @@
 <template>
+  <MenuComponent />
     <div class="constructors-view">
       <h1 class="constructors-view__title">Select a team</h1>
       <ConstructorsComponent />
@@ -6,6 +7,7 @@
   </template>
   
   <script setup>
+  import MenuComponent from '../components/MenuComponent.vue';
   import ConstructorsComponent from '../components/ConstructorsComponent.vue';
   </script>
   
