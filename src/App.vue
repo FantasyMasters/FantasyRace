@@ -17,6 +17,16 @@ import Footer from './components/FooterComponent.vue'
 #app {
   font-family: Arial, sans-serif;
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
 nav {
   display: flex;
   gap: 1rem;
