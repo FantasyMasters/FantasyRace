@@ -1,4 +1,10 @@
 <!-- preguntas -->
 <template>
-    <h1>hola</h1>
+   
+    <div class="questions-view">
+        <h1 class="questions-view__title">Questions</h1>
+           </div>
 </template>
+<style scoped>
+  
+</style>    
