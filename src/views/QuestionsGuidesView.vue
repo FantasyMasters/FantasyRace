@@ -6,5 +6,9 @@
            </div>
 </template>
 <style scoped>
-  
+   *{
+       
+         margin-top: 60rem;
+         text-align: center;
+   }
 </style>    
