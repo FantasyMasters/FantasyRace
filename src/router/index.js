@@ -13,6 +13,7 @@ const routes = [
   { path: '/constructors', component: ConstructorsView },
   { path: '/drivers', component: DriversView },
   { path: '/results', component: ResultsView }
+
 ];
 
 const router = createRouter({

@@ -11,7 +11,7 @@
 import MenuComponent from './components/MenuComponent.vue';
 </script>
 
-<style>
+ <style>
 #app {
   font-family: Arial, sans-serif;
 }
