@@ -4,11 +4,9 @@
       <h1 class="results-view__title">Race Results</h1>
       <ResultsComponent />
     </div>
-    <FooterComponent />
   </template>
   
   <script setup>
-  import FooterComponent from '@/components/FooterComponent.vue';
   import MenuComponent from '../components/MenuComponent.vue';
   import ResultsComponent from '../components/ResultsComponent.vue';
 
