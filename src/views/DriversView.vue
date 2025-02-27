@@ -3,9 +3,11 @@
       <h1 class="drivers-view__title">Select a driver</h1>
       <DriversComponent />
     </div>
+    <FooterComponent />
   </template>
   
   <script setup>
+  import FooterComponent from '@/components/FooterComponent.vue';
   import DriversComponent from '../components/DriversComponent.vue';
   </script>
   

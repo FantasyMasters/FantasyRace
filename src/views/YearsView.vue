@@ -3,9 +3,11 @@
       <h1 class="years-view__title">Choose a year of Formula 1 competition</h1>
       <YearsComponent />
     </div>
+    <FooterComponent />
   </template>
   
   <script setup>
+  import FooterComponent from '@/components/FooterComponent.vue';
   import YearsComponent from '../components/YearsComponent.vue';
   </script>
   
