@@ -3,7 +3,8 @@
     
       <MenuComponent />
     
-    <router-view></router-view>
+    <router-view>
+    </router-view>
   </div>
   <FooterComponent />
 </template>
@@ -14,11 +15,15 @@ import FooterComponent from './components/FooterComponent.vue';
 </script>
 
  <style>
-#app {
-  font-family: Arial, sans-serif;
+*{
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
 }
-nav {
-  display: flex;
-  gap: 1rem;
+
+html, body{
+  width: 100%;
+  overflow-x:hidden;
 }
-</style> 
+
+</style>

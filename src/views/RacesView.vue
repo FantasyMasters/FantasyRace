@@ -1,5 +1,5 @@
 <template>
-  <MenuComponent />
+  <!-- <MenuComponent /> -->
     <div class="races-view">
       <h1 class="races-view__title">Select a race - track</h1>
       <RacesComponent />
@@ -7,7 +7,7 @@
   </template>
   
   <script setup>
-  import MenuComponent from '../components/MenuComponent.vue';
+  // import MenuComponent from '../components/MenuComponent.vue';
   import RacesComponent from '../components/RacesComponent.vue';
   </script>
   
