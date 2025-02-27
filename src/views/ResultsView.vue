@@ -9,6 +9,7 @@
   <script setup>
   import MenuComponent from '../components/MenuComponent.vue';
   import ResultsComponent from '../components/ResultsComponent.vue';
+
   </script>
   
   <style scoped>
