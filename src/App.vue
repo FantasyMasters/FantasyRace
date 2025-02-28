@@ -5,8 +5,9 @@
     
     <router-view>
     </router-view>
+    <FooterComponent />
   </div>
-  <FooterComponent />
+  
 </template>
 
 <script setup>
@@ -19,6 +20,9 @@ import FooterComponent from './components/FooterComponent.vue';
   margin: 0%;
   padding: 0%;
   box-sizing: border-box;
+}
+router-view{
+  flex: 1;
 }
 
 html, body{
