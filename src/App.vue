@@ -24,6 +24,7 @@ import FooterComponent from './components/FooterComponent.vue';
 html, body{
   width: 100%;
   overflow-x:hidden;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 </style>

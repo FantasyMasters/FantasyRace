@@ -54,7 +54,6 @@
   text-decoration: none;
   color: white;
   font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .menu__link:hover {
