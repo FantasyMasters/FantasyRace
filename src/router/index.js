@@ -5,7 +5,8 @@ import RacesView from '../views/RacesView.vue';
 import ConstructorsView from '../views/ConstructorsView.vue';
 import DriversView from '../views/DriversView.vue';
 import ResultsView from '../views/ResultsView.vue';
-import QuestionsGuidesView from '../views/QuestionsGuidesView.vue';
+import QuestionsView from '../views/QuestionsView.vue';
+import GuidesView from '../views/GuidesView.vue';
 
 const routes = [
   { path: '/', component: HomeView },
@@ -14,7 +15,8 @@ const routes = [
   { path: '/constructors', component: ConstructorsView },
   { path: '/drivers', component: DriversView },
   { path: '/results', component: ResultsView },
-  { path: '/questions', component: QuestionsGuidesView }
+  { path: '/questions', component: QuestionsView },
+  {path: '/guides', component: GuidesView}
 
 ];
 

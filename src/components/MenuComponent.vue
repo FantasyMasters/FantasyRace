@@ -9,6 +9,7 @@
         <router-link to="/years" class="menu__link">JUEGO</router-link>
         <router-link to="/results" class="menu__link">CLASIFICACION</router-link>
         <router-link to="/questions" class="menu__link">QUESTIONS</router-link>
+        <router-link to="/guides" class="menu__link">GUIDES</router-link>
       </div>
       <router-link to="/login" class="menu__link menu__link--login">LOGIN</router-link>
     </div>
