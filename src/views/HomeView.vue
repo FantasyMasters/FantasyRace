@@ -67,11 +67,10 @@
 </section>
 
 <section class="contact">
-  <h2 class="contact__tittle">CONTACTO</h2>
   <div class="contact__container">
+    <h2 class="contact__tittle">CONTACTO</h2>
     <div class="contact__background"></div> 
     <form class="contact__form">
-      <h2 class="contact__title">Formulario de Contacto</h2>
       <input type="text" class="contact__input" placeholder="Nombre" required>
       <input type="email" class="contact__input" placeholder="Email" required>
       <input type="tel" class="contact__input" placeholder="Número de contacto" required>
@@ -117,9 +116,9 @@
 }
 
 .hero__title {
-  font-size: 3rem;
+  font-size: 4.5rem;
   margin-bottom: 20px;
-  text-shadow: 2px 2px 5px rgba(253, 1, 1, 0.846);
+  text-shadow: 10px 10px 10px rgba(253, 1, 1, 0.846);
 }
 
 .hero__button {
@@ -130,7 +129,7 @@
   cursor: pointer;
   transition: 0.3s;
   border-radius: 50%;
-  font-size: 1.5rem;
+  font-size: 2rem;
   opacity: 0.8;
 }
 
@@ -173,7 +172,6 @@
   line-height: 1.5;
   flex-grow: 1;  
 }
-
 
 .news__image-wrapper {
   position: relative;
@@ -296,6 +294,7 @@
   justify-content: center; 
   gap: 80px; 
 }
+
 .sponsor-img {
   max-width: 300px; 
   height: auto;
@@ -307,16 +306,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; 
+  height: 100vh;
   padding: 50px;
+  margin-top: 30px; 
 }
 
-.contact__tittle { 
+.contact__tittle {
   text-align: center;
   color: rgb(255, 3, 3);
   text-shadow: 2px 2px 5px rgba(4, 238, 242, 0.846);
   font-size: 4rem;
-  margin-bottom: 30px; 
+  position: absolute;
+  top: -150px;
+  z-index: 2;
 }
 
 .contact__container {
@@ -325,21 +327,9 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  max-width: 800px;
+  max-width: 550px;
   width: 100%;
   z-index: 1;
-}
-
-.contact__background {
-  position: absolute;
-  top: -50px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .contact__form {
@@ -348,6 +338,7 @@
   padding: 40px;
   border-radius: 10px;
   width: 100%;
+  box-shadow: 80px 80px 80px rgba(0, 255, 255, 0.976), 0 40px 80px rgba(255, 3, 3, 0.976);
 }
 
 .contact__input,
@@ -358,7 +349,7 @@
   border: none;
   border-radius: 8px;
   background-color: #fbf9f9;
-  color: white;
+  color: rgb(252, 6, 6);
   font-size: 1rem;
 }
 
@@ -379,7 +370,7 @@
 }
 
 .contact__button:hover {
-  background-color: #32fc05; 
+  background-color: #32fc05;
 }
 
 </style>
