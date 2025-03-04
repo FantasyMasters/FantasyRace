@@ -1,25 +1,27 @@
 <template>
   <div class="races">
-    <h2 class="races__title">Races in {{ selectedYear }}</h2>
+    <h2 class="races__title">Carreras en {{ selectedYear }}</h2>
+    <h3 class="races__subtitle">Elige una....</h3>
 
     <ul v-if="isLoading" class="races__loading">
-      <p>Loading races...</p>
+      <p>Cargando...</p>
     </ul>
 
-    <ul v-else-if="races?.length" class="races__list">
-      <li 
+      <ul v-else-if="races?.length" class="races__list">
+       <li 
         v-for="race in races" 
         :key="race.round" 
         class="races__item" 
         @click="selectRace(race)"
-      >
+       >
         {{ race.raceName }} - {{ race.Circuit.circuitName }}
-      </li>
-    </ul>
+        </li>
+      </ul>
 
-    <p v-else class="races__error">No races found or an error occurred.</p>
-  </div>
+    <p v-else class="races__error">Error, No se han encontrado carreras.</p>
+</div>
 </template>
+
 
 <script setup>
 import { computed, ref, watch } from 'vue';
@@ -35,7 +37,6 @@ const apiUrl = computed(() => selectedYear.value ? `https://api.jolpi.ca/ergast/
 
 const { data, error, isLoading } = useFetchApi(apiUrl);
 
-// Extrae las carreras de la API cuando hay datos disponibles
 const races = computed(() => data.value?.RaceTable?.Races || []);
 
 const selectRace = (race) => {
@@ -43,42 +44,92 @@ const selectRace = (race) => {
   router.push('/constructors');
 };
 
-// Si no hay año seleccionado, se podría manejar un redireccionamiento o un mensaje
 watch(selectedYear, (newYear) => {
   if (!newYear) console.warn('No year selected!');
 });
 </script>
- <style scoped>
-  .races {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .races__title {
-    font-size: 24px;
-    margin-bottom: 15px;
-  }
-  
-  .races__list {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .races__item {
-    cursor: pointer;
-    padding: 10px;
-    border: 1px solid #ccc;
-    margin: 5px;
-    border-radius: 5px;
-    transition: 0.3s;
-  }
-  
-  .races__item:hover {
-    background-color: #f0f0f0;
-  }
-  
-  .races__loading {
-    font-style: italic;
-  }
-  </style>
-  
+
+<style scoped>
+
+.races {
+  text-align: center;
+  padding: 20px;
+  min-height: 100vh;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.races__title, .races__subtitle {
+  font-size: 5rem;
+  color: black;
+  text-shadow: 2px 2px 5px rgba(4, 238, 242, 0.846);
+  margin-bottom: 20px;
+}
+
+.races__subtitle {
+  font-size: 2rem;
+}
+
+.races__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  width: 90%;
+  max-width: 1000px;
+  padding: 20px;
+  list-style-type: none;
+}
+
+.races__list::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/circuito.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.7; 
+  z-index: -1;
+}
+
+
+.races__item {
+  background:white;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border: 2px solid red;
+  opacity: 0.9;
+}
+
+.races__item:hover {
+  box-shadow: 0px 0px 15px 5px rgba(0, 255, 255, 0.8);
+  transform: scale(1.05);
+}
+
+.races__loading {
+  color: white;
+  font-size: 5rem;
+}
+
+.races__error {
+  color: rgb(255, 2, 2);
+  font-weight: bold;
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+}
+</style>
