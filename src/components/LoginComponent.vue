@@ -1,25 +1,26 @@
 <template>
-    <div class="login">
-        
+    <div class="login" v-if="!showRegister">
         <div class="login__container">
-            <router-link to="/" class="close-button" @click="goHome">X</router-link>
+            <button class="close-button" @click="goHome">X</button>
             <img src="@/assets/logo2.png" alt="FantasyRace" class="login__logo">
-            <h2 class="login__title">Login</h2>
+            <h2 class="login__title"><slot name="title">Login</slot></h2>
 
-            <form @submit.prevent="handleLogin" class="login__form">
-                <div class="login__input-group">
-                    <label for="email" class="login__label">Email</label>
-                    <input type="email" id="email" v-model="email" placeholder="username@gmail.com" required class="login__input">
-                </div>
+            <slot name="form">
+                <form @submit.prevent="handleLogin" class="login__form">
+                    <div class="login__input-group">
+                        <label for="email" class="login__label">Email</label>
+                        <input type="email" id="email" v-model="email" placeholder="username@gmail.com" required class="login__input">
+                    </div>
 
-                <div class="login__input-group">
-                    <label for="password" class="login__label">Password</label>
-                    <input type="password" id="password" v-model="password" placeholder="password" required class="login__input">
-                    <a href="#" class="login__forgot-password">Forgot password?</a>
-                </div>
+                    <div class="login__input-group">
+                        <label for="password" class="login__label">Password</label>
+                        <input type="password" id="password" v-model="password" placeholder="password" required class="login__input">
+                        <a href="#" class="login__forgot-password">Forgot password?</a>
+                    </div>
 
-                <button type="submit" class="login__button">Sign in</button>
-            </form>
+                    <button type="submit" class="login__button">Sign in</button>
+                </form>
+            </slot>
 
             <p class="login__or">or continue with</p>
 
@@ -38,29 +39,35 @@
             </div>
 
             <p class="login__register">
-                Don't have an account yet? <a href="#" class="login__register-link">Register for free</a>
+                Don't have an account yet? <a href="#" class="login__register-link" @click="showRegister = true">Register for free</a>
             </p>
         </div>
-
     </div>
+    <FormRegisterComponent v-if="showRegister" @close="showRegister = false" />
 </template>
 
 <script setup>
-
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import FormRegisterComponent from './FormRegisterComponent.vue';
 
 const email = ref('');
 const password = ref('');
+const showRegister = ref(false);
+const router = useRouter();
 
 const handleLogin = () => {
     console.log('Email:', email.value);
     console.log('Password:', password.value);
 }
 
+const goHome = () => {
+    console.log("Redirigiendo a Home...");
+    router.push( '/' );
+}
 </script>
 
 <style scoped>
-
 .login {
     background-image: linear-gradient(to bottom right, #09090A, #0BABB0, #FF0404);
     position: absolute;
@@ -81,20 +88,18 @@ const handleLogin = () => {
     border-radius: 15px;
     box-shadow: 0 0 15px rgba(2, 0, 0, 0.63);
     text-align: center;
+    position: relative;
 }
 
 .close-button {
-    position: relative;
-    background-color: #D22E40;
+    position: absolute;
     top: 10px;
-    left: 11rem;
+    right: 10px;
+    background: none;
     border: none;
-    padding: 5px 10px;
-    border-radius: 50%;
     color: white;
     font-size: 1.5rem;
     cursor: pointer;
-    text-decoration: none;
 }
 
 /* ------------ Elementos del formulario */
