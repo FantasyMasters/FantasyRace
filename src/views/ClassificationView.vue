@@ -26,7 +26,6 @@ import ClassificationComponent from '@/components/ClassificationComponent.vue';
 
 <template>
   <div>
-    <MenuComponent />
     <ClassificationComponent />
   </div>
 </template>

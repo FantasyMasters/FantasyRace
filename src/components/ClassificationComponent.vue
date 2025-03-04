@@ -1,4 +1,5 @@
 <template>
+  <ClassificationComponent/>
     <div class="classification">
       <!-- Header -->
       <header class="classificationheader">
@@ -13,45 +14,84 @@
         </nav>
       </header>
   
-      <!-- Banner -->
-      <div class="classificationbanner">
-        <h1 class="classificationtitle">Clasificación</h1>
-        <img src="@/assets/classificationbanner.jpg" alt="Fondo" class="background"/>
+     <!-- Banner con título -->
+     <div class="classification__banner">
+      <h1 class="classification__title">Classification</h1>
     </div>
-  
-      <!-- Tabla de Clasificación -->
-      <div class="classificationtables">
-        <div class="classificationtable" v-for="race in races" :key="race.id">
-          <h3 class="classificationtable-title">Premio carrera {{ race.name }}</h3>
-          <div class="classificationtable-header">
-            <span class="classificationtable-column">Posición</span>
-            <span class="classificationtable-column">Score</span>
+
+    <!-- Tablas de premios -->
+    <div class="classification__tables">
+      <div class="classification__table">
+        <h3 class="classification__table-title">Premio carrera</h3>
+        <div class="classification__table-content">
+          <div class="classification__table-row classification__table-row--header">
+            <span>Posición</span>
+            <span>Score</span>
           </div>
-          <div class="classificationtable-row" v-for="position in race.positions" :key="position">
-            <span class="classificationtable-cell">{{ position }}</span>
-            <span class="classificationtable-cell">|</span>
+          <h3>1</h3>
+          <h3>2</h3>
+          <h3>3</h3>
+          <h3>4</h3>
+          <h3>5</h3>
+          <h3>6</h3>
+          <h3>7</h3>
+          <h3>8</h3>
+          <h3>9</h3>
+          <h3>10</h3>
+        </div>
+      </div>
+
+      <div class="classification__table">
+        <h3 class="classification__table-title">Premio carrera</h3>
+        <div class="classification__table-content">
+          <div class="classification__table-row classification__table-row--header">
+            <span>Posición</span>
+            <span>Score</span>
           </div>
+          <h3>1</h3>
+          <h3>2</h3>
+          <h3>3</h3>
+          <h3>4</h3>
+          <h3>5</h3>
+          <h3>6</h3>
+          <h3>7</h3>
+          <h3>8</h3>
+          <h3>9</h3>
+          <h3>10</h3>
+        </div>
+      </div>
+
+      <div class="classification__table">
+        <h3 class="classification__table-title">Premio carrera</h3>
+        <div class="classification__table-content">
+          <div class="classification__table-row classification__table-row--header">
+            <span>Posición</span>
+            <span>Score</span>
+          </div>
+          <h3>1</h3>
+          <h3>2</h3>
+          <h3>3</h3>
+          <h3>4</h3>
+          <h3>5</h3>
+          <h3>6</h3>
+          <h3>7</h3>
+          <h3>8</h3>
+          <h3>9</h3>
+          <h3>10</h3>
         </div>
       </div>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        races: [
-          { id: 1, name: 'Carrera 1', positions: [1, 2, 3, 4, 5,6,7,8,9,10] },
-          { id: 2, name: 'Carrera 2', positions: [1, 2, 3, 4, 5,6,7,8,9,10] },
-          { id: 3, name: 'Carrera 3', positions: [1, 2, 3, 4, 5,6,7,8,9,10] }
-        ]
-      };
-    }
-  };
-  </script>
-  
-  <style scoped>
-  .classification {
+  </div>
+</template>
+
+<script>
+export default {
+  name: "Classification",
+};
+</script>
+
+<style scoped>
+.classification {
   font-family: Arial, sans-serif;
   background-color: #000;
   color: white;
@@ -84,7 +124,8 @@
   font-weight: bold;
 }
 
-.classification-banner { /* Aquí debes colocar tu banner real */
+.classification-banner {
+  background-image: url('@/assets/classificationbanner.jpg'); /* Aquí debes colocar tu banner real */
   background-size: cover;
   background-position: center;
   padding: 50px 0;
@@ -141,5 +182,4 @@
   width: 50%;
   text-align: center;
 }
-  
-  </style>
+</style>
