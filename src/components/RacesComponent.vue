@@ -67,7 +67,7 @@ watch(selectedYear, (newYear) => {
 .races__title, .races__subtitle {
   font-size: 5rem;
   color: black;
-  text-shadow: 2px 2px 5px rgba(4, 238, 242, 0.846);
+  text-shadow: 5px 5px 5px rgba(4, 238, 242, 0.846);
   margin-bottom: 20px;
 }
 

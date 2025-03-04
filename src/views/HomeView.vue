@@ -6,7 +6,7 @@
     <img src="../assets/f1_2.png" alt="Liga Fantasy" class="hero__image">
     <div class="hero__content">
       <h1 class="hero__title">DESCUBRE LA LIGA FANTASY</h1>
-      <button class="hero__button">GO</button>
+      <button class="hero__button" @click="goToLogin">GO</button>
     </div>
   </section>
 
@@ -82,8 +82,15 @@
 
 </main>
 </template>
-<script setup>
 
+<script setup>
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+const goToLogin = () => {
+  router.push('/login'); 
+};
 </script>
 
 <style scoped>
