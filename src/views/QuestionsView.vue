@@ -4,7 +4,7 @@
       <img src="@/assets/f1_2.png" alt="Fondo F1" class="faq__background" />
   
       <section class="faq__container">
-        <h1 class="faq__title">¿Como Jugar?</h1>
+        <h1 class="faq__title">FAQ'S</h1>
   
         <details class="faq__item">
           <summary class="faq__question">¿Cómo elijo mis pilotos?</summary>
