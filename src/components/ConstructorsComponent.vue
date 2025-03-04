@@ -1,11 +1,12 @@
 <template>
   <div class="constructors">
     <h2 class="constructors__title">
-      Teams in GP {{ selectedRace?.raceName }} ({{ selectedYear }})
+      Equipos en {{ selectedRace?.raceName }} ({{ selectedYear }})
     </h2>
+ <h3 class="constructors__subtitle">Elige uno.....</h3>
 
     <ul v-if="isLoading" class="constructors__loading">
-      <p>Loading constructors...</p>
+      <p>Cargando equipos...</p>
     </ul>
 
     <ul v-else-if="constructors.length" class="constructors__list">
@@ -19,7 +20,7 @@
       </li>
     </ul>
 
-    <p v-else class="constructors__error">No constructors found or an error occurred.</p>
+    <p v-else class="constructors__error">Error, no se han encontrado equipos</p>
   </div>
 </template>
 
@@ -57,37 +58,86 @@ const selectConstructor = (constructor) => {
 </script>
 
   
-  <style scoped>
-  .constructors {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .constructors__title {
-    font-size: 24px;
-    margin-bottom: 15px;
-  }
-  
-  .constructors__list {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .constructors__item {
-    cursor: pointer;
-    padding: 10px;
-    border: 1px solid #ccc;
-    margin: 5px;
-    border-radius: 5px;
-    transition: 0.3s;
-  }
-  
-  .constructors__item:hover {
-    background-color: #f0f0f0;
-  }
-  
-  .constructors__loading {
-    font-style: italic;
-  }
-  </style>
-  
+<style scoped>
+
+.constructors {
+  text-align: center;
+  padding: 20px;
+  min-height: 100vh;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.constructors__title, .constructors__subtitle {
+  font-size: 4rem;
+  color: black;
+  text-shadow: 5px 5px 5px rgba(4, 238, 242, 0.846);
+  margin-bottom: 20px;
+}
+
+.constructors__subtitle {
+  font-size: 2rem;
+}
+
+.constructors__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  width: 90%;
+  max-width: 1000px;
+  padding: 20px;
+  list-style-type: none;
+}
+
+.constructors__list::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/equipos.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.7; 
+  z-index: -1;
+}
+
+.constructors__item {
+  background:white;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border: 2px solid red;
+  opacity: 0.9;
+}
+
+.constructors__item:hover {
+  box-shadow: 0px 0px 15px 5px rgba(0, 255, 255, 0.8);
+  transform: scale(1.05);
+}
+
+.constructors__loading {
+  color: white;
+  font-size: 5rem;
+}
+
+.constructors__error {
+  color: rgb(255, 2, 2);
+  font-weight: bold;
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+}
+</style>
