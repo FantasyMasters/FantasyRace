@@ -21,12 +21,11 @@
 
 <script setup>
 import MenuComponent from '@/components/MenuComponent.vue';
-import ClassificationComponent from '@/components/ClassificationComponent.vue';
+import ClassificationComponent from '../components/ClassificationComponent.vue';
 </script>
 
 <template>
   <div>
-    <MenuComponent />
     <ClassificationComponent />
   </div>
 </template>

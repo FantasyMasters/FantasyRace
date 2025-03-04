@@ -1,105 +1,152 @@
 <template>
+  <ClassificationComponent/>
     <div class="classification">
       <!-- Header -->
-      <header class="classificationheader">
-        <div class="classificationlogo">
-          <img src="@/assets/logo.png" alt="Fantasy Race Logo">
+      <header class="classification_header">
+        <div class="classification_logo">
+          <img src="../assets/logo.png" alt="Fantasy Race Logo">
         </div>
-        <nav class="classificationnav">
-          <a class="classificationlink" href="#">HOME</a>
-          <a class="classificationlink" href="#">Juego</a>
-          <a class="classificationlink" href="#">Clasificación</a>
-          <a class="classificationlink" href="#">Login</a>
+        <nav class="classification_nav">
+          <a class="classification_link" href="#">HOME</a>
+          <a class="classification_link" href="#">Juego</a>
+          <a class="classification_link" href="#">Clasificación</a>
+          <a class="classification_link" href="#">Login</a>
         </nav>
       </header>
   
-      <!-- Banner -->
-      <div class="classificationbanner">
-        <h1 class="classificationtitle">Clasificación</h1>
-        <img src="@/assets/classificationbanner.jpg" alt="Fondo" class="background"/>
+     <!-- Banner con título -->
+     <div class="classification__banner">
+      <h1 class="classification__title">Classification</h1>
+      <img src="../assets/classificationbanner.jpg" alt="banner">
     </div>
-  
-      <!-- Tabla de Clasificación -->
-      <div class="classificationtables">
-        <div class="classificationtable" v-for="race in races" :key="race.id">
-          <h3 class="classificationtable-title">Premio carrera {{ race.name }}</h3>
-          <div class="classificationtable-header">
-            <span class="classificationtable-column">Posición</span>
-            <span class="classificationtable-column">Score</span>
+
+    <!-- Tablas de premios -->
+    <div class="classification__tables">
+      <div class="classification__table">
+        <h3 class="classification__table-title">Premio carrera 1</h3>
+        <div class="classification__table-content">
+          <div class="classification__table-row classification__table-row--header">
+            <span>Posición</span>
+            <span>Score</span>
           </div>
-          <div class="classificationtable-row" v-for="position in race.positions" :key="position">
-            <span class="classificationtable-cell">{{ position }}</span>
-            <span class="classificationtable-cell">|</span>
+          <h3>1</h3>
+          <h3>2</h3>
+          <h3>3</h3>
+          <h3>4</h3>
+          <h3>5</h3>
+          <h3>6</h3>
+          <h3>7</h3>
+          <h3>8</h3>
+          <h3>9</h3>
+          <h3>10</h3>
+        </div>
+      </div>
+
+      <div class="classification__table">
+        <h3 class="classification__table-title">Premio carrera 2</h3>
+        <div class="classification__table-content">
+          <div class="classification__table-row classification__table-row--header">
+            <span>Posición</span>
+            <span>Score</span>
           </div>
+          <h3>1</h3>
+          <h3>2</h3>
+          <h3>3</h3>
+          <h3>4</h3>
+          <h3>5</h3>
+          <h3>6</h3>
+          <h3>7</h3>
+          <h3>8</h3>
+          <h3>9</h3>
+          <h3>10</h3>
+        </div>
+      </div>
+
+      <div class="classification__table">
+        <h3 class="classification__table-title">Premio carrera 3</h3>
+        <div class="classification__table-content">
+          <div class="classification__table-row classification__table-row--header">
+            <span>Posición</span>
+            <span>Score</span>
+          </div>
+          <h3>1</h3>
+          <h3>2</h3>
+          <h3>3</h3>
+          <h3>4</h3>
+          <h3>5</h3>
+          <h3>6</h3>
+          <h3>7</h3>
+          <h3>8</h3>
+          <h3>9</h3>
+          <h3>10</h3>
         </div>
       </div>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        races: [
-          { id: 1, name: 'Carrera 1', positions: [1, 2, 3, 4, 5,6,7,8,9,10] },
-          { id: 2, name: 'Carrera 2', positions: [1, 2, 3, 4, 5,6,7,8,9,10] },
-          { id: 3, name: 'Carrera 3', positions: [1, 2, 3, 4, 5,6,7,8,9,10] }
-        ]
-      };
-    }
-  };
-  </script>
-  
-  <style scoped>
-  .classification {
-  font-family: Arial, sans-serif;
-  background-color: #000;
-  color: white;
-  padding: 0;
-  margin: 0;
+  </div>
+</template>
+
+<script>
+export default {
+  name: "Classification",
+};
+
+</script>
+
+<style scoped>
+.classification {
   text-align: center;
 }
 
-.classification-header {
+.classification__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 30px;
   background-color: black;
-  border-bottom: 4px solid red;
+  padding: 10px 30px;
 }
 
-.classification-logo img {
+.classification__logo img {
   height: 50px;
 }
 
-.classification-nav {
+.classification__nav {
   display: flex;
   gap: 20px;
 }
 
-.classification-link {
+.classification__nav-link {
   color: white;
   text-decoration: none;
   font-weight: bold;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
 }
 
-.classification-banner { /* Aquí debes colocar tu banner real */
+.classification__nav-link:hover {
+  color: cyan;
+}
+
+.classification__banner {
+  background-image: url('../assets/classificationbanner.jpg');
   background-size: cover;
-  background-position: center;
-  padding: 50px 0;
-  margin: 0;
-}
-
-.classification-title {
-  font-size: 48px;
-  font-weight: bold;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: white;
-  -webkit-text-stroke: 2px black;
-  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+  margin-bottom: 20px;
 }
 
-.classification-tables {
+.classification__title {
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  -webkit-text-stroke: 2px black;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+.classification__tables {
   display: flex;
   justify-content: center;
   gap: 20px;
@@ -107,39 +154,33 @@
   background-color: white;
 }
 
-.classification-table {
+.classification__table {
   background-color: black;
-  padding: 15px;
-  border-radius: 10px;
   color: white;
+  border-radius: 10px;
+  padding: 15px;
   width: 250px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px cyan;
 }
 
-.classification-table-title {
-  margin: 10px 0;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.classification-table-header {
-  display: flex;
-  justify-content: space-between;
+.classification__table-title {
+  font-size: 1.2rem;
+  margin: 0;
   margin-bottom: 10px;
-  font-weight: bold;
-  border-bottom: 1px solid white;
-  padding-bottom: 5px;
 }
 
-.classification-table-row {
+.classification__table-content {
+  text-align: left;
+}
+
+.classification__table-row {
   display: flex;
   justify-content: space-between;
-  margin: 3px 0;
+  padding: 5px 0;
+  border-bottom: 1px solid gray;
 }
 
-.classification-table-cell {
-  width: 50%;
-  text-align: center;
+.classification__table-row--header {
+  font-weight: bold;
 }
-  
-  </style>
+</style>
