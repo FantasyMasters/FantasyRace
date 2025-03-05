@@ -54,9 +54,35 @@
                         <input type="password" id="confirmPassword" v-model="confirmPassword" placeholder="confirm password" required class="register__input">
                     </div>
 
-                    <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
+                    <!-- <div class="register__input-group">
+                        <label for="constructors" class="register__label">Constructors</label>
+                        <select id="constructors" v-model="selectedConstructors" multiple class="register__input">
+                            <option v-for="constructor in constructors" :key="constructor">{{ constructor }}</option>
+                        </select>
+                    </div>
 
-                    
+                    <div class="register__input-group">
+                        <label for="drivers" class="register__label">Drivers</label>
+                        <select id="drivers" v-model="selectedDrivers" multiple class="register__input">
+                            <option v-for="driver in drivers" :key="driver">{{ driver }}</option>
+                        </select>
+                    </div>
+
+                    <div class="register__input-group">
+                        <label for="races" class="register__label">Races</label>
+                        <select id="races" v-model="selectedRaces" multiple class="register__input">
+                            <option v-for="race in races" :key="race">{{ race }}</option>
+                        </select>
+                    </div>
+
+                    <div class="register__input-group">
+                        <label for="years" class="register__label">Years</label>
+                        <select id="years" v-model="selectedYears" multiple class="register__input">
+                            <option v-for="year in years" :key="year">{{ year }}</option>
+                        </select>
+                    </div> -->
+
+                    <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
                 </div>
 
                 <button type="submit" class="register__button">Create Account</button>
@@ -67,6 +93,9 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import axios from 'axios';
+import { useF1Store } from '@/store/useF1Store';
 import LoginComponent from './LoginComponent.vue';
 
 const name = ref('');
@@ -79,24 +108,63 @@ const password = ref('');
 const confirmPassword = ref('');
 const profileImage = ref('');
 const errorMessage = ref('');
+const router = useRouter();
+const f1Store = useF1Store();
 
-const handleRegister = () => {
+const selectedConstructors = ref([]);
+const selectedDrivers = ref([]);
+const selectedRaces = ref([]);
+const selectedYears = ref([]);
 
+const handleRegister = async () => {
     if (password.value !== confirmPassword.value) {
         errorMessage.value = 'Passwords do not match';
         return;
     }
+    errorMessage.value = '';
 
-    console.log('Name:', name.value);
-    console.log('Last Name:', lastname.value);
-    console.log('Nick:', nick.value);
-    console.log('Age:', age.value);
-    console.log('Country:', country.value);
-    console.log('Email:', email.value);
-    console.log('Password:', password.value);
-    console.log('Confirm Password:', confirmPassword.value);
-}
+    // Verrifica si el usuario ya existe
+    try {
+        const checkUser = await axios.get(`http://localhost:3000/users?email=${email.value}`);
+        if (checkUser.data.length > 0) {
+            errorMessage.value = 'User already exists';
+            return;
+        }
+    } catch (error) {
+        console.error('Error checking user:', error);
+    }
 
+
+
+    // Crear el objeto del usuario
+    const newUser = {
+        name: name.value,
+        lastname: lastname.value,
+        nick: nick.value,
+        age: age.value,
+        country: country.value,
+        email: email.value,
+        password: password.value,
+         profileImage: profileImage.value, // || "@/assets/userimage.png",
+        // constructors: selectedConstructors.value,
+        // drivers: selectedDrivers.value,
+        // races: selectedRaces.value,
+        // years: selectedYears.value
+    };
+
+
+    try {
+        const response = await axios.post('http://localhost:3000/users', newUser);
+        f1Store.fetchUser = response.data; // Guarda el usuario en el store
+        localStorage.setItem('user', JSON.stringify(response.data)); // Guarda el usuario en el local storage
+        router.push('/user-profile'); // Redirige al perfil
+    } catch (error) {
+        console.error('Error registering user:', error);
+        errorMessage.value = 'An error occurred';
+    }
+};
+
+// Función para previsualizar la imagen de perfil
 const previewImage = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -109,18 +177,15 @@ const previewImage = (event) => {
 
 <style scoped>
 .register__form {
-    display: ruby;}
-
-.register__signup {
     display: flex;
     flex-direction: column;
-    gap: 5rem;
-    margin-right: 3rem;
+    align-items: center;
 }
 .register__container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: 49px;
+    grid-column-gap: 20px;
+    width: 100%;
 }
 .register__input-group {
     display: flex;
@@ -141,9 +206,7 @@ const previewImage = (event) => {
     outline: none;
     border-radius: 5px;
     font-size: 1rem;
-
 }
- /* ------------------- Image Profile */
 .register__button {
     width: 30%;
     background-color: #0BABB0;
@@ -157,7 +220,6 @@ const previewImage = (event) => {
     margin-top: 10px;
     margin-bottom: 1rem;
 }
-
 .register__profile {
     grid-column: span 2;
     display: flex;
@@ -186,8 +248,8 @@ const previewImage = (event) => {
     object-fit: cover;
 }
 .error-message {
-    color: #D22E40;
-    font-size: 1.2rem;
+    color: red;
+    font-size: 1rem;
     margin-top: 10px;
 }
 </style>

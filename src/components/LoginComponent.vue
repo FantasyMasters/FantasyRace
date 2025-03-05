@@ -50,15 +50,31 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import FormRegisterComponent from './FormRegisterComponent.vue';
+import { useF1Store } from '@/store/useF1Store';
 
 const email = ref('');
 const password = ref('');
 const showRegister = ref(false);
 const router = useRouter();
+const store = useF1Store();
+const errorMessage = ref('');
 
-const handleLogin = () => {
-    console.log('Email:', email.value);
-    console.log('Password:', password.value);
+const handleLogin = async () => {
+    try {
+        const response = await axios.get(`http://localhost:3000/users?email=${email.value}&password=${password.value}`); // BUsca el usuario por email y password
+
+        if (response.data.length > 0) {
+            const user = response.data[0]; // Simulación de obtener el usuario
+            store.setUser(user); // Guardar el usuario en el store
+            localStorage.setItem('user', JSON.stringify(user)); // Guardar el usuario en el localStorage
+            router.push('/user-profile'); // Redirigir al perfil
+        } else {
+            errorMessage.value = 'Email or password incorrect';
+        } 
+    } catch (error) {
+        console.error(error);
+        errorMessage.value = 'An error occurred';
+    }
 }
 
 const goHome = () => {
