@@ -1,0 +1,43 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "John",
+      "lastname": "Doe",
+      "nick": "SpeedKing",
+      "age": 28,
+      "country": "USA",
+      "email": "john.doe@example.com",
+      "password": "123456",
+      "profileImage": "/assets/userimage.png",
+      "constructors": [
+        "Red Bull",
+        "Mercedes"
+      ],
+      "drivers": [
+        "Max Verstappen",
+        "Lewis Hamilton"
+      ],
+      "races": [
+        "Monaco GP",
+        "Silverstone GP"
+      ],
+      "years": [
+        "2022",
+        "2023"
+      ]
+    },
+    {
+      "id": "d358",
+      "name": "Pepita",
+      "lastname": "Perez",
+      "nick": "Pepa",
+      "age": 20,
+      "country": "España",
+      "email": "pepita@gmail.com",
+      "password": "12345",
+      "profileImage": "@/assets/userimage.png"
+    }
+  ],
+  "selections": []
+}

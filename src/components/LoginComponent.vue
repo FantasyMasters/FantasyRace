@@ -8,15 +8,17 @@
             <slot name="form">
                 <form @submit.prevent="handleLogin" class="login__form">
                     <div class="login__input-group">
-                        <label for="email" class="login__label">Email</label>
-                        <input type="email" id="email" v-model="email" placeholder="username@gmail.com" required class="login__input">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" v-model="email" required class="login__input">
                     </div>
 
                     <div class="login__input-group">
-                        <label for="password" class="login__label">Password</label>
-                        <input type="password" id="password" v-model="password" placeholder="password" required class="login__input">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" v-model="password" required class="login__input">
                         <a href="#" class="login__forgot-password">Forgot password?</a>
                     </div>
+
+                    <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
 
                     <button type="submit" class="login__button">Sign in</button>
                 </form>
@@ -28,18 +30,17 @@
                 <button class="login__social-btn login__social-btn--google">
                     <i class="fab fa-google"></i>
                 </button>
-
                 <button class="login__social-btn login__social-btn--github">
                     <i class="fab fa-github"></i>
                 </button>
-
                 <button class="login__social-btn login__social-btn--facebook">
                     <i class="fab fa-facebook"></i>
                 </button>
             </div>
 
             <p class="login__register">
-                Don't have an account yet? <a href="#" class="login__register-link" @click="showRegister = true">Register for free</a>
+                Don't have an account yet? 
+                <a href="#" class="login__register-link" @click="showRegister = true">Register for free</a>
             </p>
         </div>
     </div>
@@ -49,25 +50,51 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import axios from 'axios';
+import { useF1Store } from '@/store/useF1Store';
 import FormRegisterComponent from './FormRegisterComponent.vue';
 
 const email = ref('');
 const password = ref('');
 const showRegister = ref(false);
 const router = useRouter();
+const store = useF1Store();
+const errorMessage = ref('');
 
-const handleLogin = () => {
-    console.log('Email:', email.value);
-    console.log('Password:', password.value);
-}
+const handleLogin = async () => {
+    try {
+        const response = await axios.get(`http://localhost:3000/users?email=${email.value}`);
+
+        if (response.data.length > 0) {
+            const user = response.data.find(u => u.password === password.value);
+            if (user) {
+                store.setUser(user); // Guardar el usuario en el store
+                localStorage.setItem('user', JSON.stringify(user)); // Guardar en localStorage
+                router.push('/user-profile'); // Redirigir al perfil
+            } else {
+                errorMessage.value = 'Incorrect password';
+            }
+        } else {
+            errorMessage.value = 'User not found';
+        }
+    } catch (error) {
+        console.error(error);
+        errorMessage.value = 'An error occurred';
+    }
+};
 
 const goHome = () => {
     console.log("Redirigiendo a Home...");
-    router.push( '/' );
-}
+    router.push('/');
+};
 </script>
 
 <style scoped>
+.error-message {
+    color: red;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
 .login {
     background-image: linear-gradient(to bottom right, #09090A, #0BABB0, #FF0404);
     position: absolute;
@@ -121,6 +148,7 @@ const goHome = () => {
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
+    color: white;
     text-align: left;
     width: 100%;
 }

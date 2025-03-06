@@ -8,6 +8,7 @@ import ResultsView from '../views/ResultsView.vue';
 import QuestionsView from '../views/QuestionsView.vue';
 import GuidesView from '../views/GuidesView.vue';
 import LoginView from '../views/LoginView.vue';
+import UserProfileView from '@/views/UserProfileView.vue';
 import ClassificationView from '@/views/ClassificationView.vue';
 
 
@@ -21,7 +22,8 @@ const routes = [
   { path: '/questions', component: QuestionsView },
   {path: '/guides', component: GuidesView},
   { path: '/login', component: LoginView },
-  {path: '/Classification', component: ClassificationView}
+  {path: '/Classification', component: ClassificationView},
+  {path: '/user-profile', component: UserProfileView}
 
 ];
 
