@@ -14,8 +14,8 @@
         v-for="driver in drivers"
         :key="driver.driverId"
         class="drivers__item"
-        @click="selectDriver(driver)"
-      >
+        @click="selectDriver(driver)">
+
         {{ driver.givenName }} {{ driver.familyName }} ({{ driver.nationality }})
       </li>
     </ul>
@@ -27,11 +27,10 @@
 <script setup>
 import { computed } from 'vue';
 import { useF1Store } from '../store/useF1Store';
-import { useRouter } from 'vue-router';
 import { useFetchApi } from '../composables/useFetchApi';
 
 const store = useF1Store();
-const router = useRouter();
+const emit = defineEmits(["nextStep"]);
 
 const selectedRace = computed(() => store.selectedRace);
 const selectedConstructor = computed(() => store.selectedConstructor);
@@ -56,8 +55,9 @@ const drivers = computed(() => {
 
 const selectDriver = (driver) => {
   store.setDriver(driver);
-  router.push('/results');
+  emit("nextStep");
 };
+
 </script>
 
 <style scoped>
@@ -77,8 +77,8 @@ const selectDriver = (driver) => {
 
 .drivers__title, .drivers__subtitle {
   font-size: 4rem;
-  color: black;
-  text-shadow: 5px 5px 5px rgba(4, 238, 242, 0.846);
+  color: rgb(255, 255, 255);
+  text-shadow: 5px 5px 5px rgba(255, 4, 4, 0.846);
   margin-bottom: 20px;
 }
 
@@ -107,7 +107,7 @@ const selectDriver = (driver) => {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.7; 
+  opacity: 0.5; 
   z-index: -1;
 }
 

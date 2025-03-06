@@ -27,11 +27,10 @@
 <script setup>
 import { computed } from 'vue';
 import { useF1Store } from '../store/useF1Store';
-import { useRouter } from 'vue-router';
 import { useFetchApi } from '../composables/useFetchApi';
 
 const store = useF1Store();
-const router = useRouter();
+const emit = defineEmits(["nextStep"]);
 
 const selectedRace = computed(() => store.selectedRace);
 const selectedYear = computed(() => store.selectedYear);
@@ -53,7 +52,7 @@ const constructors = computed(() => {
 
 const selectConstructor = (constructor) => {
   store.setConstructor(constructor);
-  router.push('/drivers');
+  emit("nextStep");
 };
 </script>
 
@@ -75,8 +74,8 @@ const selectConstructor = (constructor) => {
 
 .constructors__title, .constructors__subtitle {
   font-size: 4rem;
-  color: black;
-  text-shadow: 5px 5px 5px rgba(4, 238, 242, 0.846);
+  color: rgb(255, 255, 255);
+  text-shadow: 5px 5px 5px rgba(255, 0, 0, 0.846);
   margin-bottom: 20px;
 }
 
@@ -88,7 +87,7 @@ const selectConstructor = (constructor) => {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
-  width: 90%;
+  width: 100%;
   max-width: 1000px;
   padding: 20px;
   list-style-type: none;
@@ -105,7 +104,7 @@ const selectConstructor = (constructor) => {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.7; 
+  opacity: 0.5; 
   z-index: -1;
 }
 

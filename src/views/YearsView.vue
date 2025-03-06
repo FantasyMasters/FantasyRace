@@ -2,17 +2,33 @@
   <main class="years">
     <!-- Imagen de fondo principal -->
     <img src="../assets/f1_7.jpg" alt="Fondo F1" class="years__background" />  
-    <section class="years__container">
+   
       <div class="years-view">
-        
-        <YearsComponent />
+        <component :is="currentComponent" @nextStep="nextStep" />
       </div>
-    </section>
+
   </main>
 </template>
 
 <script setup>
-import YearsComponent from '../components/YearsComponent.vue';
+import { ref, computed } from "vue";
+import YearsComponent from "../components/YearsComponent.vue";
+import RacesComponent from "../components/RacesComponent.vue";
+import ConstructorComponent from "../components/ConstructorsComponent.vue";
+import DriversComponent from "../components/DriversComponent.vue";
+import ResultsComponent from '../components/ResultsComponent.vue';
+const steps = [YearsComponent, RacesComponent, ConstructorComponent, DriversComponent, ResultsComponent];
+const currentStep = ref(0);
+
+// Computed  para que se pueda cambiar de uno a otro
+const currentComponent = computed(() => steps[currentStep.value]);
+
+//Creamos una condicion para cambiar de componente.
+const nextStep = () => {
+  if (currentStep.value < steps.length - 1) {
+    currentStep.value++;
+  }
+};
 </script>
 
 <style scoped>
@@ -27,6 +43,28 @@ import YearsComponent from '../components/YearsComponent.vue';
   position: relative;
 }
 
+.years::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); 
+  z-index: 1;
+}
+
+/*los componentes estén encima */
+.years-view {
+  position: relative;
+  z-index: 2; 
+  width: 100%;
+  max-width: 1500px; 
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1); 
+  border-radius: 10px;
+}
+
 /* Imagen de fondo principal */
 .years__background {
   position: absolute;
@@ -38,24 +76,5 @@ import YearsComponent from '../components/YearsComponent.vue';
   z-index: -1;
 }
 
-/* Contenedor principal con la segunda imagen de fondo */
-.years__container {  
-  height: 80vh;    
-  width: 60vw;
-  padding: 2rem;    
-  background: rgba(0, 0, 0, 0.5); 
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; 
-  background-image: url('../assets/bandera.png');
-  opacity: 0.9;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 12px; 
-}
 </style>
 

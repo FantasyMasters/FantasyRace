@@ -26,11 +26,10 @@
 <script setup>
 import { computed, ref, watch } from 'vue';
 import { useF1Store } from '../store/useF1Store';
-import { useRouter } from 'vue-router';
 import { useFetchApi } from '../composables/useFetchApi';
 
 const store = useF1Store();
-const router = useRouter();
+const emit = defineEmits(["nextStep"]);
 
 const selectedYear = computed(() => store.selectedYear);
 const apiUrl = computed(() => selectedYear.value ? `https://api.jolpi.ca/ergast/f1/${selectedYear.value}.json` : '');
@@ -41,7 +40,7 @@ const races = computed(() => data.value?.RaceTable?.Races || []);
 
 const selectRace = (race) => {
   store.setRace(race);
-  router.push('/constructors');
+  emit("nextStep");
 };
 
 watch(selectedYear, (newYear) => {
@@ -54,21 +53,37 @@ watch(selectedYear, (newYear) => {
 .races {
   text-align: center;
   padding: 20px;
-  min-height: 100vh;
+  min-height: 70px;
   background-position: center;
   background-attachment: fixed;
+  position: relative;
+  margin-top:80px;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: center;
-  position: relative;
+  padding-top: 100px; 
+}
+
+.races::before {
+  content: "";
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/circuito.png'); 
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+  z-index: -1;
 }
 
 .races__title, .races__subtitle {
   font-size: 5rem;
-  color: black;
-  text-shadow: 5px 5px 5px rgba(4, 238, 242, 0.846);
-  margin-bottom: 20px;
+  color: rgb(255, 255, 255);
+  text-shadow: 5px 5px 5px rgba(249, 1, 1, 0.846);
 }
 
 .races__subtitle {
@@ -80,26 +95,10 @@ watch(selectedYear, (newYear) => {
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
   width: 90%;
-  max-width: 1000px;
+  max-width: 1500px;
   padding: 20px;
   list-style-type: none;
 }
-
-.races__list::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('../assets/circuito.png');
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.7; 
-  z-index: -1;
-}
-
 
 .races__item {
   background:white;
@@ -112,7 +111,6 @@ watch(selectedYear, (newYear) => {
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   border: 2px solid red;
-  opacity: 0.9;
 }
 
 .races__item:hover {

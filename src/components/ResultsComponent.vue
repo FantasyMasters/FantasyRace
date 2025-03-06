@@ -1,14 +1,14 @@
 <template>
   <div class="results">
-    <h2 class="results__title">Year {{ selectedYear }}</h2>
-    <h2 class="results__title">Results in GP {{ selectedRace?.raceName }}</h2>
+    <h2 class="results__title">Resultados de la carrera {{ selectedYear }}</h2>
+    <h2 class="results__subtitle"> {{ selectedRace?.raceName }}</h2>
 
     <div v-if="isLoading" class="results__loading">
-      <p>Loading results...</p>
+      <p>Cargando resultados...</p>
     </div>
 
     <div v-else-if="podium.length" class="results__podium">
-      <h3>Top 3 - Podium</h3>
+      <h3 class="results__top3">Top 3 - Podium</h3>
       <ul class="results__list">
         <li v-for="result in podium" :key="result.position" class="results__item">
           <strong>{{ result.position }}º</strong> - 
@@ -17,25 +17,26 @@
       </ul>
     </div>
 
-    <p v-else class="results__error">No results found or an error occurred.</p>
+    <p v-else class="results__error">Error, no se encontraron resultados.</p>
 
     <div class="results__selection">
-      <h3>Your Choices</h3>
-      <p><strong>Year:</strong> {{ selectedYear }}</p>
-      <p><strong>Race:</strong> {{ selectedRace?.raceName }}</p>
-      <p><strong>Team:</strong> {{ selectedConstructor?.name }}</p>
-      <p><strong>Driver:</strong> {{ selectedDriver?.givenName }} {{ selectedDriver?.familyName }}</p>
-      <p><strong>Score:</strong> {{ score }}</p>
+      <h3>Tus elecciones</h3>
+      <p><strong>Año:</strong> {{ selectedYear }}</p>
+      <p><strong>Carrera:</strong> {{ selectedRace?.raceName }}</p>
+      <p><strong>Escuderia:</strong> {{ selectedConstructor?.name }}</p>
+      <p><strong>Piloto:</strong> {{ selectedDriver?.givenName }} {{ selectedDriver?.familyName }}</p>
+      <p><strong>Puntuación:</strong> {{ score }}</p>
     </div>
   </div>
 </template>
 
 <script setup>
-import { computed, watch } from 'vue';
+import { computed, watch} from 'vue';
 import { useF1Store } from '../store/useF1Store';
 import { useFetchApi } from '../composables/useFetchApi';
 
 const store = useF1Store();
+const emit = defineEmits(["nextStep"]);
 
 const selectedYear = computed(() => store.selectedYear);
 const selectedRace = computed(() => store.selectedRace);
@@ -82,35 +83,88 @@ watch([score, selectedYear, selectedRace, selectedConstructor, selectedDriver], 
 });
 </script>
 
+<style scoped>
 
+.results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  padding: 20px;
+  position: relative;
+}
+
+/* Fondo semitransparente detrás de los resultados */
+.results::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/podium.png'); 
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  opacity: 0.7;
+}
+
+
+/* Títulos */
+.results__title, .results__subtitle, .results__top3 {
+  font-size: 4rem;
+  margin-bottom: 10px;
+  color:white;
+  text-shadow: 2px 2px 5px rgb(255, 0, 0);
+}
+
+
+/* Lista de podium */
+.results__podium {
+  margin-top: 20px;
+  font-size: 2rem;
+}
+
+.results__list {
+  list-style: none;
+  padding: 0;
+}
+
+.results__item {
+  background: rgba(250, 247, 247, 0.928);
+  padding: 10px;
+  border-radius: 5px;
+  margin: 5px 0;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px rgb(0, 255, 251);
   
-  <style scoped>
-  .results {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .results__title {
-    font-size: 24px;
-    margin-bottom: 15px;
-  }
-  
-  .results__podium, .results__selection {
-    margin: 20px 0;
-  }
-  
-  .results__list {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .results__item {
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .results__loading {
-    font-style: italic;
-  }
-  </style>
-  
+}
+
+/* Estilos de carga y error */
+.results__loading, .results__error {
+  font-size: 2rem;
+  font-weight: bold;
+  color: red;
+  margin-top: 20px;
+}
+
+/* Sección de selecciones */
+.results__selection {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.915);
+  border-radius: 5px;
+  text-align: left;
+  width: 100%;
+  max-width: 500px;
+  text-shadow: 2px 2px 5px rgb(0, 255, 251);
+}
+
+.results__selection p {
+  font-size: 2rem;
+  font-weight: bold;
+}
+</style>
