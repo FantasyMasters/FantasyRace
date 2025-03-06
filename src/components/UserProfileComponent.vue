@@ -1,8 +1,10 @@
 <template>
+  <!-- Mensaje de error si algo falla -->
   <div v-if="f1Store.error" class="error-message">
     <p>{{ f1Store.error }}</p>
   </div>
 
+  <!-- Perfil del usuario -->
   <div class="profile__container" v-if="user">
     <h2 class="profile__title">User Profile</h2>
     <div class="profile__details">
@@ -13,27 +15,33 @@
       <p><strong>Country:</strong> {{ user.country }}</p>
       <p><strong>Email:</strong> {{ user.email }}</p>
     </div>
-    <div class="profile__history" v-if="userHistory">
+
+    <!-- Historial de selecciones -->
+    <div class="profile__history" v-if="userHistory?.constructors?.length">
       <h3>History</h3>
-      <div>
+
+      <div v-if="userHistory.constructors.length">
         <h4>Constructors</h4>
         <ul>
           <li v-for="constructor in userHistory.constructors" :key="constructor">{{ constructor }}</li>
         </ul>
       </div>
-      <div>
+
+      <div v-if="userHistory.drivers.length">
         <h4>Drivers</h4>
         <ul>
           <li v-for="driver in userHistory.drivers" :key="driver">{{ driver }}</li>
         </ul>
       </div>
-      <div>
+
+      <div v-if="userHistory.races.length">
         <h4>Races</h4>
         <ul>
           <li v-for="race in userHistory.races" :key="race">{{ race }}</li>
         </ul>
       </div>
-      <div>
+
+      <div v-if="userHistory.years.length">
         <h4>Years</h4>
         <ul>
           <li v-for="year in userHistory.years" :key="year">{{ year }}</li>
@@ -51,17 +59,25 @@ const f1Store = useF1Store();
 
 onMounted(() => {
   try {
-    const storedUser = localStorage.getItem('user'); // Get the user from localStorage
-    if (storedUser) {
-      const parsedUser = JSON.parse(storedUser); // Parse it as JSON
-      f1Store.setUser(parsedUser); // Set the user in the store (ensure `setUser` exists in store)
-      f1Store.loadUserSelections(parsedUser.id); // Cargar el historial de selecciones del usuario
-    } else { 
-      throw new Error('User not found in localStorage'); // Si no se encuentra el usuario, lanzar un error
+    // Verifica si ya hay un usuario cargado en el store
+    if (!f1Store.user) {
+      const storedUser = localStorage.getItem('user');
+
+      if (storedUser) {
+        const parsedUser = JSON.parse(storedUser);
+        f1Store.setUser(parsedUser);
+
+        // Verificar que el usuario tenga un ID antes de cargar su historial
+        if (parsedUser.id) {
+          f1Store.loadUserSelections(parsedUser.id);
+        }
+      } else {
+        f1Store.error = 'No user found. Please log in.';
+      }
     }
   } catch (error) {
-    console.error('Error loading user from localStorage', error);
-    f1Store.error = 'Error loading user from localStorage'; // Mostrar el error en el store
+    console.error('Error loading user from localStorage:', error);
+    f1Store.error = 'Error loading user data.';
   }
 });
 

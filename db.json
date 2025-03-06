@@ -28,81 +28,15 @@
       ]
     },
     {
-      "id": "1e04",
-      "name": "David",
-      "lastname": "Bustos",
-      "nick": "Davis",
-      "age": 26,
-      "country": "COlombia",
-      "email": "daviorbus@gmail.com",
-      "password": "davis",
-      "profileImage": ""
-    },
-    {
-      "id": "b77b",
-      "name": "allan",
-      "lastname": "bustos",
-      "nick": "davis",
-      "age": 26,
-      "country": "honduras",
-      "email": "allan@gmail.com",
-      "password": "allan2",
-      "profileImage": ""
-    },
-    {
-      "id": "e003",
-      "name": "pepe",
-      "lastname": "pepi",
-      "nick": "pepito",
-      "age": 26,
-      "country": "mexico",
-      "email": "pepi@gmai.com",
-      "password": "pepito",
-      "profileImage": ""
-    },
-    {
-      "id": "7eba",
-      "name": "NN",
-      "lastname": "NNN",
-      "nick": "n5",
-      "age": 25,
-      "country": "COLOMBIA",
-      "email": "nn@gmail.com",
-      "password": "123456",
-      "profileImage": ""
-    },
-    {
-      "id": "604c",
-      "name": "dey",
-      "lastname": "bustos",
-      "nick": "deivis",
-      "age": 26,
-      "country": "colombia",
-      "email": "davis@gmail.com",
-      "password": "davis",
-      "profileImage": ""
-    },
-    {
-      "id": "8a59",
-      "name": "sajdaj",
-      "lastname": "jasdjajsa",
-      "nick": "dasjaj2",
-      "age": 30,
-      "country": "argentina",
-      "email": "hahaha@gmail.com",
-      "password": "4567",
-      "profileImage": ""
-    },
-    {
-      "id": "d2f9",
-      "name": "nay",
-      "lastname": "nasjna",
-      "nick": "naya",
-      "age": 25,
-      "country": "españa",
-      "email": "nay@gmail.com",
-      "password": "1234",
-      "profileImage": ""
+      "id": "d358",
+      "name": "Pepita",
+      "lastname": "Perez",
+      "nick": "Pepa",
+      "age": 20,
+      "country": "España",
+      "email": "pepita@gmail.com",
+      "password": "12345",
+      "profileImage": "@/assets/userimage.png"
     }
   ],
   "selections": []

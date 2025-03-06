@@ -15,89 +15,100 @@ export const useF1Store = defineStore('f1', {
       races: [],
       years: []
     },
-    error: null, // Nuevo estado para almacenar errores
+    error: null, // Estado para almacenar errores
   }),
 
   actions: {
+    // 🟢 CARGAR USUARIO DESDE JSON-SERVER
     async fetchUser(userId) {
       this.error = null; // Limpiar errores previos
       try {
         const response = await axios.get(`http://localhost:3000/users/${userId}`);
-        this.user = response.data;
-        this.userHistory = {
-          constructors: this.user.constructors,
-          drivers: this.user.drivers,
-          races: this.user.races,
-          years: this.user.years
-        };
+        if (response.data) {
+          this.user = response.data;
+          this.userHistory = {
+            constructors: this.user.constructors || [],
+            drivers: this.user.drivers || [],
+            races: this.user.races || [],
+            years: this.user.years || []
+          };
+          this.saveUserToStorage(); // Guardar usuario en localStorage
+        } else {
+          this.error = 'Usuario no encontrado';
+          this.user = null;
+        }
       } catch (error) {
-        this.error = 'Error fetching user: ' + error.message;
+        this.error = 'Error al obtener usuario: ' + error.message;
         console.error('Error fetching user:', error);
       }
     },
 
-    // Mantener selections user
-    setYear(year) {
-      this.clearSelections();
-      this.selectedYear = year;
+    // 🟢 GUARDAR USUARIO EN LOCALSTORAGE
+    saveUserToStorage() {
       try {
-        localStorage.setItem('year', JSON.stringify(this.selectedYear));
+        localStorage.setItem('user', JSON.stringify(this.user));
       } catch (error) {
-        this.error = 'Error saving year to localStorage: ' + error.message;
-        console.error('Error saving year:', error);
-      }
-    },
-
-    setUser(user) {
-      this.user = user;
-      try {
-        localStorage.setItem('user', JSON.stringify(user));
-      } catch (error) {
-        this.error = 'Error saving user to localStorage: ' + error.message;
+        this.error = 'Error guardando usuario en localStorage: ' + error.message;
         console.error('Error saving user:', error);
       }
     },
 
+    // 🟢 ASIGNAR USUARIO AL STORE
+    setUser(user) {
+      this.user = user;
+      this.saveUserToStorage();
+    },
+
+    // 🟢 CERRAR SESIÓN
+    logoutUser() {
+      this.user = null;
+      this.userHistory = {
+        constructors: [],
+        drivers: [],
+        races: [],
+        years: []
+      };
+      localStorage.removeItem('user');
+    },
+
+    // 🟢 GUARDAR SELECCIONES DEL USUARIO
+    setYear(year) {
+      this.clearSelections();
+      this.selectedYear = year;
+      this.saveToLocalStorage('year', this.selectedYear);
+    },
+
     setRace(race) {
       this.selectedRace = race;
-      try {
-        localStorage.setItem('race', JSON.stringify(race));
-      } catch (error) {
-        this.error = 'Error saving race to localStorage: ' + error.message;
-        console.error('Error saving race:', error);
-      }
+      this.saveToLocalStorage('race', race);
     },
 
     setConstructor(constructor) {
       this.selectedConstructor = constructor;
-      try {
-        localStorage.setItem('constructor', JSON.stringify(constructor));
-      } catch (error) {
-        this.error = 'Error saving constructor to localStorage: ' + error.message;
-        console.error('Error saving constructor:', error);
-      }
+      this.saveToLocalStorage('constructor', constructor);
     },
 
     setDriver(driver) {
       this.selectedDriver = driver;
-      try {
-        localStorage.setItem('driver', JSON.stringify(driver));
-      } catch (error) {
-        this.error = 'Error saving driver to localStorage: ' + error.message;
-        console.error('Error saving driver:', error);
-      }
+      this.saveToLocalStorage('driver', driver);
     },
 
     setScore(score) {
       this.score = score;
+      this.saveToLocalStorage('score', score);
+    },
+
+    // 🟢 GUARDAR EN LOCALSTORAGE (FUNCIÓN REUTILIZABLE)
+    saveToLocalStorage(key, value) {
       try {
-        localStorage.setItem('score', JSON.stringify(score));
+        localStorage.setItem(key, JSON.stringify(value));
       } catch (error) {
-        this.error = 'Error saving score to localStorage: ' + error.message;
-        console.error('Error saving score:', error);
+        this.error = `Error guardando ${key} en localStorage: ` + error.message;
+        console.error(`Error saving ${key}:`, error);
       }
     },
 
+    // 🟢 LIMPIAR SELECCIONES
     clearSelections() {
       try {
         this.selectedYear = null;
@@ -105,13 +116,9 @@ export const useF1Store = defineStore('f1', {
         this.selectedConstructor = null;
         this.selectedDriver = null;
         this.score = 0;
-        localStorage.removeItem('year');
-        localStorage.removeItem('race');
-        localStorage.removeItem('constructor');
-        localStorage.removeItem('driver');
-        localStorage.removeItem('score');
+        ['year', 'race', 'constructor', 'driver', 'score'].forEach(key => localStorage.removeItem(key));
       } catch (error) {
-        this.error = 'Error clearing selections: ' + error.message;
+        this.error = 'Error limpiando selecciones: ' + error.message;
         console.error('Error clearing selections:', error);
       }
     }

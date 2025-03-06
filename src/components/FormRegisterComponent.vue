@@ -3,9 +3,8 @@
         <template #title>Register</template>
         <template #form>
             <form @submit.prevent="handleRegister" class="register__form">
-
                 <div class="register__container">
-
+                    <!-- Imagen de perfil -->
                     <div class="register__profile">
                         <input type="file" id="profilePic" @change="previewImage" hidden>
                         <label for="profilePic" class="profile__label">
@@ -14,73 +13,46 @@
                         </label>
                     </div>
 
+                    <!-- Campos del formulario -->
                     <div class="register__input-group">
-                        <label for="name" class="register__label">Name</label>
-                        <input type="text" id="name" v-model="name" placeholder="Name" required class="register__input">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" v-model="name" required class="register__input">
                     </div>
 
                     <div class="register__input-group">
-                        <label for="lastname" class="register__label">Last Name</label>
-                        <input type="text" id="lastname" v-model="lastname" placeholder="Last Name" required class="register__input">
+                        <label for="lastname">Last Name</label>
+                        <input type="text" id="lastname" v-model="lastname" required class="register__input">
                     </div>
 
                     <div class="register__input-group">
-                        <label for="nick" class="register__label">Nick</label>
-                        <input type="text" id="nick" v-model="nick" placeholder="Your nickname" required class="register__input">
+                        <label for="nick">Nick</label>
+                        <input type="text" id="nick" v-model="nick" required class="register__input">
                     </div>
 
                     <div class="register__input-group">
-                        <label for="age" class="register__label">Age</label>
-                        <input type="number" id="age" v-model="age" placeholder="Your age" required class="register__input">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" v-model="age" required class="register__input">
                     </div>
 
                     <div class="register__input-group">
-                        <label for="country" class="register__label">Country</label>
-                        <input type="text" id="country" v-model="country" placeholder="Your country" required class="register__input">
+                        <label for="country">Country</label>
+                        <input type="text" id="country" v-model="country" required class="register__input">
                     </div>
 
                     <div class="register__input-group">
-                        <label for="email" class="register__label">Email</label>
-                        <input type="email" id="email" v-model="email" placeholder="username@gmail.com" required class="register__input">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" v-model="email" required class="register__input">
                     </div>
 
                     <div class="register__input-group">
-                        <label for="password" class="register__label">Password</label>
-                        <input type="password" id="password" v-model="password" placeholder="password" required class="register__input">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" v-model="password" required class="register__input">
                     </div>
 
                     <div class="register__input-group">
-                        <label for="confirmPassword" class="register__label">Confirm Password</label>
-                        <input type="password" id="confirmPassword" v-model="confirmPassword" placeholder="confirm password" required class="register__input">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" v-model="confirmPassword" required class="register__input">
                     </div>
-
-                    <!-- <div class="register__input-group">
-                        <label for="constructors" class="register__label">Constructors</label>
-                        <select id="constructors" v-model="selectedConstructors" multiple class="register__input">
-                            <option v-for="constructor in constructors" :key="constructor">{{ constructor }}</option>
-                        </select>
-                    </div>
-
-                    <div class="register__input-group">
-                        <label for="drivers" class="register__label">Drivers</label>
-                        <select id="drivers" v-model="selectedDrivers" multiple class="register__input">
-                            <option v-for="driver in drivers" :key="driver">{{ driver }}</option>
-                        </select>
-                    </div>
-
-                    <div class="register__input-group">
-                        <label for="races" class="register__label">Races</label>
-                        <select id="races" v-model="selectedRaces" multiple class="register__input">
-                            <option v-for="race in races" :key="race">{{ race }}</option>
-                        </select>
-                    </div>
-
-                    <div class="register__input-group">
-                        <label for="years" class="register__label">Years</label>
-                        <select id="years" v-model="selectedYears" multiple class="register__input">
-                            <option v-for="year in years" :key="year">{{ year }}</option>
-                        </select>
-                    </div> -->
 
                     <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
                 </div>
@@ -97,6 +69,8 @@ import { useRouter } from 'vue-router';
 import axios from 'axios';
 import { useF1Store } from '@/store/useF1Store';
 import LoginComponent from './LoginComponent.vue';
+defineEmits(['close']); // Declaramos el evento emitido
+
 
 const name = ref('');
 const lastname = ref('');
@@ -111,19 +85,15 @@ const errorMessage = ref('');
 const router = useRouter();
 const f1Store = useF1Store();
 
-const selectedConstructors = ref([]);
-const selectedDrivers = ref([]);
-const selectedRaces = ref([]);
-const selectedYears = ref([]);
-
+// Validar si el usuario ya existe antes de registrarlo
 const handleRegister = async () => {
     if (password.value !== confirmPassword.value) {
         errorMessage.value = 'Passwords do not match';
         return;
     }
+
     errorMessage.value = '';
 
-    // Verrifica si el usuario ya existe
     try {
         const checkUser = await axios.get(`http://localhost:3000/users?email=${email.value}`);
         if (checkUser.data.length > 0) {
@@ -134,8 +104,6 @@ const handleRegister = async () => {
         console.error('Error checking user:', error);
     }
 
-
-
     // Crear el objeto del usuario
     const newUser = {
         name: name.value,
@@ -145,18 +113,12 @@ const handleRegister = async () => {
         country: country.value,
         email: email.value,
         password: password.value,
-         profileImage: profileImage.value, // || "@/assets/userimage.png",
-        // constructors: selectedConstructors.value,
-        // drivers: selectedDrivers.value,
-        // races: selectedRaces.value,
-        // years: selectedYears.value
+        profileImage: profileImage.value || '@/assets/userimage.png'
     };
-
 
     try {
         const response = await axios.post('http://localhost:3000/users', newUser);
-        f1Store.fetchUser = response.data; // Guarda el usuario en el store
-        localStorage.setItem('user', JSON.stringify(response.data)); // Guarda el usuario en el local storage
+        f1Store.setUser(response.data); // Guarda el usuario en el store correctamente
         router.push('/user-profile'); // Redirige al perfil
     } catch (error) {
         console.error('Error registering user:', error);
@@ -190,14 +152,10 @@ const previewImage = (event) => {
 .register__input-group {
     display: flex;
     flex-direction: column;
+    color: white;
     margin-bottom: 20px;
     text-align: left;
     width: 100%;
-}
-.register__label {
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-    color: white;
 }
 .register__input {
     width: 100%;
@@ -239,7 +197,6 @@ const previewImage = (event) => {
 }
 .profile__icon {
     width: 100%;
-    height: 100%;
     object-fit: cover;
 }
 .profile__image {
