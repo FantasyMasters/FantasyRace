@@ -88,7 +88,7 @@ const selectConstructor = (constructor) => {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
-  width: 90%;
+  width: 100%;
   max-width: 1000px;
   padding: 20px;
   list-style-type: none;
