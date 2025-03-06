@@ -1,19 +1,4 @@
 <template>
-  <ClassificationComponent/>
-    <div class="classification">
-      <!-- Header -->
-      <header class="classification_header">
-        <div class="classification_logo">
-          <img src="../assets/logo.png" alt="Fantasy Race Logo">
-        </div>
-        <nav class="classification_nav">
-          <a class="classification_link" href="#">HOME</a>
-          <a class="classification_link" href="#">Juego</a>
-          <a class="classification_link" href="#">Clasificación</a>
-          <a class="classification_link" href="#">Login</a>
-        </nav>
-      </header>
-  
      <!-- Banner con título -->
      <div class="classification__banner">
       <h1 class="classification__title">Classification</h1>
@@ -95,7 +80,6 @@
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
