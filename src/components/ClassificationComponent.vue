@@ -25,20 +25,32 @@
       <div class="classification__table">
         <h3 class="classification__table-title">Premio carrera 1</h3>
         <div class="classification__table-content">
-          <div class="classification__table-row classification__table-row--header">
+          <div class="classification__table-position ">
             <span>Posición</span>
-            <span>Score</span>
+              <h3>1</h3>
+              <h3>2</h3>
+              <h3>3</h3>
+              <h3>4</h3>
+              <h3>5</h3>
+              <h3>6</h3>
+              <h3>7</h3>
+              <h3>8</h3>
+              <h3>9</h3>
+              <h3>10</h3>
           </div>
-          <h3>1</h3>
-          <h3>2</h3>
-          <h3>3</h3>
-          <h3>4</h3>
-          <h3>5</h3>
-          <h3>6</h3>
-          <h3>7</h3>
-          <h3>8</h3>
-          <h3>9</h3>
-          <h3>10</h3>
+
+          <div class="classification__table-score">
+            <span>Score</span>
+              <h3>1</h3>
+              <h3>2</h3>
+              <h3>3</h3>
+              <h3>4</h3>
+              <h3>5</h3>
+              <h3>6</h3>
+              <h3>7</h3>
+              <h3>8</h3>
+              <h3>9</h3>
+              <h3>10</h3>
         </div>
       </div>
 
@@ -83,6 +95,7 @@
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -127,8 +140,6 @@ export default {
 }
 
 .classification__banner {
-  background-image: url('../assets/classificationbanner.jpg');
-  background-size: cover;
   height: 400px;
   display: flex;
   align-items: center;

@@ -27,11 +27,10 @@
 <script setup>
 import { computed } from 'vue';
 import { useF1Store } from '../store/useF1Store';
-import { useRouter } from 'vue-router';
 import { useFetchApi } from '../composables/useFetchApi';
 
 const store = useF1Store();
-const router = useRouter();
+const emit = defineEmits(["nextStep"]);
 
 const selectedRace = computed(() => store.selectedRace);
 const selectedYear = computed(() => store.selectedYear);
@@ -53,7 +52,7 @@ const constructors = computed(() => {
 
 const selectConstructor = (constructor) => {
   store.setConstructor(constructor);
-  router.push('/drivers');
+  emit("nextStep");
 };
 </script>
 

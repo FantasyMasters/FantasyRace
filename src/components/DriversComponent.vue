@@ -14,8 +14,8 @@
         v-for="driver in drivers"
         :key="driver.driverId"
         class="drivers__item"
-        @click="selectDriver(driver)"
-      >
+        @click="selectDriver(driver)">
+
         {{ driver.givenName }} {{ driver.familyName }} ({{ driver.nationality }})
       </li>
     </ul>
@@ -27,11 +27,10 @@
 <script setup>
 import { computed } from 'vue';
 import { useF1Store } from '../store/useF1Store';
-import { useRouter } from 'vue-router';
 import { useFetchApi } from '../composables/useFetchApi';
 
 const store = useF1Store();
-const router = useRouter();
+const emit = defineEmits(["nextStep"]);
 
 const selectedRace = computed(() => store.selectedRace);
 const selectedConstructor = computed(() => store.selectedConstructor);
@@ -56,8 +55,9 @@ const drivers = computed(() => {
 
 const selectDriver = (driver) => {
   store.setDriver(driver);
-  router.push('/results');
+  emit("nextStep");
 };
+
 </script>
 
 <style scoped>
