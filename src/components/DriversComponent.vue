@@ -3,10 +3,8 @@
     <h2 class="drivers__title">
       Pilotos de {{ selectedConstructor?.name }} en {{ selectedRace?.raceName }} ({{ selectedYear }})
     </h2>
-<h3 class="drivers__subtitle">Elige uno.....</h3>
-
     <ul v-if="isLoading" class="drivers__loading">
-      <p>Loading drivers...</p>
+      <p>Cargando pilotos...</p>
     </ul>
 
     <ul v-else-if="drivers.length" class="drivers__list">
@@ -20,7 +18,7 @@
       </li>
     </ul>
 
-    <p v-else class="drivers__error">No drivers found or an error occurred.</p>
+    <p v-else class="drivers__error">Error, no se ha elegido piloto</p>
   </div>
 </template>
 
@@ -64,26 +62,22 @@ const selectDriver = (driver) => {
 
 .drivers {
   text-align: center;
-  padding: 20px;
   min-height: 100vh;
   background-position: center;
   background-attachment: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; 
   position: relative;
+  padding-top: 200px; 
 }
 
-.drivers__title, .drivers__subtitle {
+.drivers__title{
   font-size: 4rem;
-  color: rgb(255, 255, 255);
+  color: rgb(8, 8, 8);
   text-shadow: 5px 5px 5px rgba(255, 4, 4, 0.846);
-  margin-bottom: 20px;
-}
-
-.drivers__subtitle {
-  font-size: 2rem;
+  margin-bottom: 50px;
 }
 
 .drivers__list {
@@ -92,7 +86,7 @@ const selectDriver = (driver) => {
   gap: 20px;
   width: 90%;
   max-width: 1000px;
-  padding: 20px;
+  padding: 60px;
   list-style-type: none;
 }
 
@@ -102,13 +96,14 @@ const selectDriver = (driver) => {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 160%;
   background-image: url('../assets/piloto.png');
-  background-size: contain;
+  background-size: 110%;
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0.5; 
   z-index: -1;
+  margin-top: 100px;
 }
 
 .drivers__item {

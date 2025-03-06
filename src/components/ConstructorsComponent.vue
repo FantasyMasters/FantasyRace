@@ -3,7 +3,6 @@
     <h2 class="constructors__title">
       Equipos en {{ selectedRace?.raceName }} ({{ selectedYear }})
     </h2>
- <h3 class="constructors__subtitle">Elige uno.....</h3>
 
     <ul v-if="isLoading" class="constructors__loading">
       <p>Cargando equipos...</p>
@@ -43,11 +42,16 @@ const apiUrl = computed(() =>
 
 const { data, isLoading } = useFetchApi(apiUrl);
 
-// Filtrar los constructores que quedaron en el top 10
+// Filtrar los constructore
 const constructors = computed(() => {
   const results = data.value?.RaceTable?.Races[0]?.Results || [];
-  const topConstructors = results.slice(0, 10).map((result) => result.Constructor);
-  return Array.from(new Map(topConstructors.map((c) => [c.constructorId, c])).values());
+  const topConstructors = results.slice(0, 20).map((result) => result.Constructor);
+  
+  // Eliminamos duplicados en el arreglo
+  const uniqueConstructors = Array.from(new Map(topConstructors.map((c) => [c.constructorId, c])).values());
+  
+  // Esto hara que aparezcan de manera aleatoria en el grid
+  return uniqueConstructors.sort(() => Math.random() - 0.5);
 });
 
 const selectConstructor = (constructor) => {
@@ -72,15 +76,11 @@ const selectConstructor = (constructor) => {
   position: relative;
 }
 
-.constructors__title, .constructors__subtitle {
+.constructors__title {
   font-size: 4rem;
-  color: rgb(255, 255, 255);
+  color: rgb(3, 3, 3);
   text-shadow: 5px 5px 5px rgba(255, 0, 0, 0.846);
   margin-bottom: 20px;
-}
-
-.constructors__subtitle {
-  font-size: 2rem;
 }
 
 .constructors__list {
@@ -99,7 +99,7 @@ const selectConstructor = (constructor) => {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 190%;
   background-image: url('../assets/equipos.png');
   background-size: contain;
   background-position: center;
@@ -113,7 +113,7 @@ const selectConstructor = (constructor) => {
   padding: 15px;
   border-radius: 10px;
   text-align: center;
-  font-size: 20px;
+  font-size: 1.5rem;
   font-weight: bold;
   color: black;
   cursor: pointer;

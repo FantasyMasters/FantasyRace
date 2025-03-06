@@ -37,39 +37,36 @@
 
   /* Contenedor principal con la segunda imagen de fondo */
 .years__container {  
-  height: 80vh;    
-  width: 80vw;
-  padding: 2rem;
+  height: 70vh;    
+  width: 70vw;
+  padding: 10rem;
   position: relative;
   z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; 
   background-image: url('../assets/bandera.png');
   opacity: 0.9;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  margin-top: 80px;
+  margin-top: 285px;
   border-radius: 12px;
 }
 
   .Componentyears {
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     gap: 12px;
     padding: 20px;
-    border: 1px solid rgba(17, 11, 11, 0.3);
     transition: all 0.3s ease-in-out;
     position: absolute;
-    top: 25%;
+    top: 10%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 70%;
+    width: 50%;
     background-color: #fff;
     border-radius: 12px;
-    border: 4px, solid, red;
+    border: solid, 2px, red;
   }
 
   .Componentyears:hover {
@@ -80,32 +77,30 @@
   .Componentyears__label {
     font-size: 4.5rem;
     margin-bottom: 1rem;
-    text-shadow: 10px 10px 10px rgba(2, 246, 233, 0.846);  
-    color: #141414;
-    text-align: center;
+    text-shadow: 10px 10px 10px rgba(246, 10, 2, 0.936);  
+    color: black;
   }
 
   .Componentyears__select {
   padding: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   border-radius: 0.5rem; 
-  background-color: #f4f6f7; 
-  color: #333;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
   appearance: none;
+  border: none;
+  width: 30%;
 }
 
 /* Cambiar color de fondo y texto cuando el select está en foco */
 .Componentyears__select:focus {
-  background-color: #ffe6e6; 
-  color: #d32f2f; 
-  border-color: #b71c1c; 
+  background-color: #fcffff; 
   outline: none;
+  border: solid, 1.5px, rgb(255, 0, 0);
 }
 /*Opciones dentro del select */
 .Componentyears__select option {
-  max-height: 120px; 
+  max-height: 50px; 
   overflow-y: auto;
     background-color: white; 
   color: black; 
@@ -118,6 +113,6 @@
 }
 
   .Componentyears__select:hover {
-    border-color: #888;
+    border-color: #888888;
   }
   </style>

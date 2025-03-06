@@ -21,6 +21,7 @@
 
     <div class="results__selection">
       <h3>Tus elecciones</h3>
+
       <p><strong>Año:</strong> {{ selectedYear }}</p>
       <p><strong>Carrera:</strong> {{ selectedRace?.raceName }}</p>
       <p><strong>Escuderia:</strong> {{ selectedConstructor?.name }}</p>
@@ -114,9 +115,9 @@ watch([score, selectedYear, selectedRace, selectedConstructor, selectedDriver], 
 
 /* Títulos */
 .results__title, .results__subtitle, .results__top3 {
-  font-size: 4rem;
+  font-size: 3rem;
   margin-bottom: 10px;
-  color:white;
+  color:rgb(6, 6, 6);
   text-shadow: 2px 2px 5px rgb(255, 0, 0);
 }
 
@@ -161,10 +162,12 @@ watch([score, selectedYear, selectedRace, selectedConstructor, selectedDriver], 
   width: 100%;
   max-width: 500px;
   text-shadow: 2px 2px 5px rgb(0, 255, 251);
+  font-size: 2rem;
 }
 
 .results__selection p {
   font-size: 2rem;
   font-weight: bold;
+  margin-top: 5px;
 }
 </style>

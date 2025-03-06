@@ -1,7 +1,6 @@
 <template>
   <div class="races">
     <h2 class="races__title">Carreras en {{ selectedYear }}</h2>
-    <h3 class="races__subtitle">Elige una....</h3>
 
     <ul v-if="isLoading" class="races__loading">
       <p>Cargando...</p>
@@ -36,7 +35,11 @@ const apiUrl = computed(() => selectedYear.value ? `https://api.jolpi.ca/ergast/
 
 const { data, error, isLoading } = useFetchApi(apiUrl);
 
-const races = computed(() => data.value?.RaceTable?.Races || []);
+//las carreras estaran mezcladas de manera aleatoria
+const races = computed(() => {
+  const racesArray = data.value?.RaceTable?.Races || [];
+  return racesArray.sort(() => Math.random() - 0.5);  
+});
 
 const selectRace = (race) => {
   store.setRace(race);
@@ -62,7 +65,7 @@ watch(selectedYear, (newYear) => {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding-top: 100px; 
+  padding-top: 0px; 
 }
 
 .races::before {
@@ -80,14 +83,10 @@ watch(selectedYear, (newYear) => {
   z-index: -1;
 }
 
-.races__title, .races__subtitle {
+.races__title {
   font-size: 5rem;
-  color: rgb(255, 255, 255);
-  text-shadow: 5px 5px 5px rgba(249, 1, 1, 0.846);
-}
-
-.races__subtitle {
-  font-size: 2rem;
+  color: rgb(17, 17, 17);
+  text-shadow: 5px 5px 5px rgba(249, 1, 1, 0.856);
 }
 
 .races__list {
