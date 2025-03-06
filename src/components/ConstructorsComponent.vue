@@ -74,8 +74,8 @@ const selectConstructor = (constructor) => {
 
 .constructors__title, .constructors__subtitle {
   font-size: 4rem;
-  color: black;
-  text-shadow: 5px 5px 5px rgba(4, 238, 242, 0.846);
+  color: rgb(255, 255, 255);
+  text-shadow: 5px 5px 5px rgba(255, 0, 0, 0.846);
   margin-bottom: 20px;
 }
 
@@ -104,7 +104,7 @@ const selectConstructor = (constructor) => {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.7; 
+  opacity: 0.5; 
   z-index: -1;
 }
 

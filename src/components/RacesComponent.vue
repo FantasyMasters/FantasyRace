@@ -76,14 +76,14 @@ watch(selectedYear, (newYear) => {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.7; 
+  opacity: 0.5;
   z-index: -1;
 }
 
 .races__title, .races__subtitle {
   font-size: 5rem;
-  color: rgb(255, 254, 254);
-  text-shadow: 5px 5px 5px rgba(4, 238, 242, 0.846);
+  color: rgb(255, 255, 255);
+  text-shadow: 5px 5px 5px rgba(249, 1, 1, 0.846);
 }
 
 .races__subtitle {

@@ -43,6 +43,28 @@ const nextStep = () => {
   position: relative;
 }
 
+.years::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); 
+  z-index: 1;
+}
+
+/*los componentes estén encima */
+.years-view {
+  position: relative;
+  z-index: 2; 
+  width: 100%;
+  max-width: 1500px; 
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1); 
+  border-radius: 10px;
+}
+
 /* Imagen de fondo principal */
 .years__background {
   position: absolute;

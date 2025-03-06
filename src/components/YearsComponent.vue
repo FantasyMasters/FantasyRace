@@ -38,9 +38,8 @@
   /* Contenedor principal con la segunda imagen de fondo */
 .years__container {  
   height: 80vh;    
-  width: 60vw;
-  padding: 2rem;    
-  background: rgba(0, 0, 0, 0.5); 
+  width: 80vw;
+  padding: 2rem;
   position: relative;
   z-index: 2;
   display: flex;
