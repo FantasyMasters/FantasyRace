@@ -5,7 +5,7 @@ import QuestionsView from '../views/QuestionsView.vue';
 import GuidesView from '../views/GuidesView.vue';
 import LoginView from '../views/LoginView.vue';
 import UserProfileView from '@/views/UserProfileView.vue';
-import ClassificationView from '../views/ClassificationView.vue';
+import ClassificationView from '@/views/ClassificationView.vue';
 
 
 const routes = [
