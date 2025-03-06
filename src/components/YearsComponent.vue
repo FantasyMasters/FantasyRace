@@ -1,20 +1,23 @@
 <template>
-  
+  <section class="years__container">
+
     <div class="Componentyears">
       <label for="year-select" class="Componentyears__label">Elige un Año:</label>
       <select id="year-select" name="year-select" v-model="selectedYear" class="Componentyears__select" @change="handleYearChange">
         <option v-for="year in years" :key="year" :value="year">{{ year }}</option>
       </select>
     </div>
+
+    </section>
   </template>
   
   <script setup>
   import { computed } from 'vue';
   import { useF1Store } from '../store/useF1Store';
-  import { useRouter } from 'vue-router';
+
   
   const store = useF1Store();
-  const router = useRouter();
+  const emit = defineEmits(["nextStep"]);
   
   const years = computed(() => Array.from({ length: 26 }, (_, i) => 2000 + i));
   const selectedYear = computed({
@@ -23,21 +26,41 @@
   });
   
   const handleYearChange = () => {
-    if (selectedYear.value) {
-    router.push('/races');
+  if (selectedYear.value) {
+    emit("nextStep");  
   }
   };
-  
   
   </script>
   
   <style scoped>
+
+  /* Contenedor principal con la segunda imagen de fondo */
+.years__container {  
+  height: 80vh;    
+  width: 60vw;
+  padding: 2rem;    
+  background: rgba(0, 0, 0, 0.5); 
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  background-image: url('../assets/bandera.png');
+  opacity: 0.9;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: 80px;
+  border-radius: 12px;
+}
+
   .Componentyears {
     display: flex;
     flex-direction: column;
     gap: 12px;
     padding: 20px;
-    border-radius: 12px;
     border: 1px solid rgba(17, 11, 11, 0.3);
     transition: all 0.3s ease-in-out;
     position: absolute;
@@ -46,18 +69,19 @@
     transform: translate(-50%, -50%);
     width: 70%;
     background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    border: 4px, solid, red;
   }
 
   .Componentyears:hover {
     transform: translate(-50%, -50%) scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 20px rgba(1, 255, 204, 0.947);
   }
 
   .Componentyears__label {
     font-size: 4.5rem;
     margin-bottom: 1rem;
-    text-shadow: 10px 10px 10px rgba(65, 64, 64, 0.846);  
+    text-shadow: 10px 10px 10px rgba(2, 246, 233, 0.846);  
     color: #141414;
     text-align: center;
   }

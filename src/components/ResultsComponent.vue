@@ -31,11 +31,12 @@
 </template>
 
 <script setup>
-import { computed, watch } from 'vue';
+import { computed, watch} from 'vue';
 import { useF1Store } from '../store/useF1Store';
 import { useFetchApi } from '../composables/useFetchApi';
 
 const store = useF1Store();
+const emit = defineEmits(["nextStep"]);
 
 const selectedYear = computed(() => store.selectedYear);
 const selectedRace = computed(() => store.selectedRace);
