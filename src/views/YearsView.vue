@@ -15,6 +15,7 @@ import RacesComponent from "../components/RacesComponent.vue";
 import ConstructorComponent from "../components/ConstructorsComponent.vue";
 import DriversComponent from "../components/DriversComponent.vue";
 import ResultsComponent from '../components/ResultsComponent.vue';
+import { useF1Store } from "@/store/useF1Store";
 const steps = [YearsComponent, RacesComponent, ConstructorComponent, DriversComponent, ResultsComponent];
 const currentStep = ref(0);
 

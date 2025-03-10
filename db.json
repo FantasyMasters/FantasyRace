@@ -37,6 +37,17 @@
       "email": "pepita@gmail.com",
       "password": "12345",
       "profileImage": "@/assets/userimage.png"
+    },
+    {
+      "id": "295e",
+      "name": "nay",
+      "lastname": "perez",
+      "nick": "naya",
+      "age": 45,
+      "country": "españa",
+      "email": "nay@gmail.com",
+      "password": "1234",
+      "profileImage": "@/assets/userimage.png"
     }
   ],
   "selections": []
