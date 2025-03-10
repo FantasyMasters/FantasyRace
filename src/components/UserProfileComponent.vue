@@ -109,6 +109,7 @@ const playAgain = () => {
   border-radius: 15px;
   box-shadow: 0 0 15px rgba(2, 0, 0, 0.63);
   color: white;
+  font-size: 1.4rem;
 }
 
 .profile__grid {
@@ -118,16 +119,32 @@ const playAgain = () => {
   grid-template-rows: auto; /* Allow rows to adjust based on content */
 }
 
+@media (max-width: 720px) {
+  .profile__grid {
+    display: flex;
+    flex-direction: column;
+  }
+  .profile__actions {
+    display: flex;
+    flex-direction: column;
+  }
+  .profile__details {
+    margin-bottom: 0.5rem;
+  }
+}
+
 .profile__details {
   grid-column: 1 / 2; /* Span one column */
-  grid-row: 1 / -1; /* Span all rows */
+  grid-row: 1 / 4; /* Span all rows */
   background-color: rgba(219, 219, 219, 0.08);
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 0 15px rgba(2, 0, 0, 0.63);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Align items to the start of the column */
+  justify-content: space-evenly; /* Align items to the start of the column */
+  margin-right: 1rem;
+  margin-bottom: -4rem;
 }
 
 .profile__details p {
@@ -218,5 +235,26 @@ const playAgain = () => {
   font-size: 1.2rem;
   text-align: center;
   margin-bottom: 20px;
+}
+
+@media (max-width: 720px) {
+  .profile__container {
+    margin: 2rem;
+    margin-top: 5rem;
+    padding: 2rem;
+    font-size: 1rem;
+  }
+  .profile__grid {
+    display: flex;
+    flex-direction: column;
+  }
+  .profile__actions {
+    display: flex;
+    flex-direction: column;
+  }
+  .profile__details {
+    margin: 0 auto;
+    margin-bottom: 0.5rem;
+  }
 }
 </style>
