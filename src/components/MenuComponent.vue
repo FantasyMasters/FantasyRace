@@ -11,10 +11,23 @@
         <router-link to="/questions" class="menu__link">QUESTIONS</router-link>
         <router-link to="/guides" class="menu__link">GUIDES</router-link>
       </div>
-      <router-link to="/login" class="menu__link menu__link--login">LOGIN</router-link>
+
+      <div v-if="user" class="menu__user">
+        <router-link to="/user-profile" class="menu__link menu__link--user">{{ user.nick }}</router-link>
+      </div>
+      <router-link v-else to="/login" class="menu__link menu__link--login">LOGIN</router-link>
     </div>
+
   </nav>
 </template>
+
+<script setup>
+import { computed } from 'vue';
+import { useF1Store } from '@/store/useF1Store';
+
+const store = useF1Store();
+const user = computed(() => store.user);
+</script>
 
 <style scoped>
 .menu {

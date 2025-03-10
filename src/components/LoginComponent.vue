@@ -70,7 +70,7 @@ const handleLogin = async () => {
             if (user) {
                 store.setUser(user); // Guardar el usuario en el store
                 localStorage.setItem('user', JSON.stringify(user)); // Guardar en localStorage
-                router.push('/user-profile'); // Redirigir al perfil
+                router.push('/years'); // Redirigir al perfil
             } else {
                 errorMessage.value = 'Incorrect password';
             }
