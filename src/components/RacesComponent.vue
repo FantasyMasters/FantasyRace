@@ -129,4 +129,49 @@ watch(selectedYear, (newYear) => {
   padding: 10px;
   border-radius: 8px;
 }
+
+/*MediasQueries*/
+/* Media Queries para tablets (1024px) */
+@media (max-width: 1024px) {
+  .races__list {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 2rem;
+  }
+
+  .races__title {
+    font-size: 4rem;
+  }
+
+  .races__item {
+    font-size: 16px;
+  }
+
+.races__item:hover {
+  box-shadow: none;
+  transform: none;
+}
+
+}
+
+/* Media Queries para móviles (menos de 720px) */
+@media (max-width: 720px) {
+  .races__list {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .races__title {
+    font-size: 3rem;
+  }
+
+  .races__item {
+    font-size: 14px;
+  }
+  
+  .races__item:hover {
+  box-shadow: none;
+  transform: none;
+}
+}
+
 </style>

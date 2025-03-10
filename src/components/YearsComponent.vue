@@ -115,4 +115,52 @@
   .Componentyears__select:hover {
     border-color: #888888;
   }
+
+
+/* Media Queries para tablets (1024px) */
+@media (max-width: 1024px) {
+  .years__container {
+    height: 60vh; 
+    width: 80vw; 
+    padding: 30rem; 
+  }
+
+  .Componentyears {
+    width: 70%; 
+    top: 15%; 
+  }
+
+  .Componentyears__label {
+    font-size: 3.5rem;
+  }
+
+  .Componentyears__select {
+    width: 50%;
+    font-size: 1.2rem;
+  }
+}
+
+/* Media Queries para móviles (menos de 720px) */
+@media (max-width: 720px) {
+  .years__container {
+    height: 50vh; 
+    width: 90vw; 
+    padding: 15rem;   
+  }
+
+  .Componentyears {
+    width: 80%; 
+    top: 5%; 
+  }
+
+  .Componentyears__label {
+    font-size: 2.5rem; 
+  }
+
+  .Componentyears__select {
+    width: 70%; 
+    font-size: 1rem; 
+  }
+}
+
   </style>
