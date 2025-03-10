@@ -54,9 +54,9 @@
 
       <div class="profile__history clasification">
         <h4>Score</h4>
-        <ul v-if="user.score !== undefined">
-          <li>{{ user.score }}</li>
-        </ul>
+        <ul v-if="userHistory.score.length">
+          <li v-for="score in userHistory.score" :key="score">{{ score }}</li>
+       </ul>
         <p v-else>No score available</p>
       </div>
     </div>

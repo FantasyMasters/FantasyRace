@@ -7,13 +7,13 @@ export const useF1Store = defineStore('f1', {
     selectedRace: null,
     selectedConstructor: null,
     selectedDriver: null,
-    score: 0,
     user: null,
     userHistory: {
       constructors: [],
       drivers: [],
       races: [],
-      years: []
+      years: [],
+      score: []
     },
     error: null,
   }),
@@ -32,7 +32,8 @@ export const useF1Store = defineStore('f1', {
             constructors: response.data.constructors || [],
             drivers: response.data.drivers || [],
             races: response.data.races || [],
-            years: response.data.years || []
+            years: response.data.years || [],
+            score: response.data.score || []
           };
 
           this.saveUserToStorage();
@@ -65,7 +66,8 @@ export const useF1Store = defineStore('f1', {
             constructors: this.user.constructors || [],
             drivers: this.user.drivers || [],
             races: this.user.races || [],
-            years: this.user.years || []
+            years: this.user.years || [],
+            score: this.user.score || [],
           };
         }
       } catch (error) {
@@ -98,6 +100,12 @@ export const useF1Store = defineStore('f1', {
           console.error(`Error actualizando ${type}:`, error);
         }
       }
+      if (score !== undefined) {
+        if (!this.userHistory.score.includes(score)) {
+          this.userHistory.score.push(score);  // Agregar el puntaje al historial
+          this.user.score = this.userHistory.score;  // Asegurarnos de que el score se guarde en el user también
+        }
+      }
     },
 
     // 🟢 Métodos para guardar selecciones
@@ -126,6 +134,12 @@ export const useF1Store = defineStore('f1', {
       this.addToUserHistory('drivers', fullName); // Guarda en JSON Server
     },
 
+    setScore(score){
+      this.score = score;
+      this.userHistory.score.push(score); // Guarda solo el nombre completo del piloto
+      this.addToUserHistory('score', score); // Guarda en JSON Se
+    },
+
     // 🟢 Guardar en LocalStorage
     saveToLocalStorage(key, value) {
       try {
@@ -144,7 +158,8 @@ export const useF1Store = defineStore('f1', {
             constructors: response.data.constructors || [],
             drivers: response.data.drivers || [],
             races: response.data.races || [],
-            years: response.data.years || []
+            years: response.data.years || [],
+            score: response.data.score || []
           };
         }
       } catch (error) {
@@ -158,7 +173,7 @@ export const useF1Store = defineStore('f1', {
       this.selectedRace = null;
       this.selectedConstructor = null;
       this.selectedDriver = null;
-      this.score = 0;
+      this.score = null;
       ['year', 'race', 'constructor', 'driver', 'score'].forEach(key => localStorage.removeItem(key));
     }
   }

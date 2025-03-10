@@ -8,8 +8,8 @@
         <router-link to="/" class="menu__link">HOME</router-link>
         <router-link to="/years" class="menu__link">JUEGO</router-link>
         <router-link to="/classification" class="menu__link">CLASIFICACION</router-link>
-        <router-link to="/questions" class="menu__link">QUESTIONS</router-link>
-        <router-link to="/guides" class="menu__link">GUIDES</router-link>
+        <router-link to="/questions" class="menu__link">FAQ'S</router-link>
+        <router-link to="/guides" class="menu__link">GUIA</router-link>
       </div>
 
       <div v-if="user" class="menu__user">
