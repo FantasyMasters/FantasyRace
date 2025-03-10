@@ -380,5 +380,59 @@ const goToLogin = () => {
   background-color: #32fc05;
 }
 
+/*medias queries*/
+/* Medias queries para tablet */
+@media screen and (max-width: 1024px) and (min-width: 720px) {
+  .news {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .news__content {
+    margin-bottom: 20px;
+  }
+
+  .news__image-wrapper {
+    margin-left: 0;
+  }
+
+  .morenews__container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .morenews__title {
+    font-size: 3rem;
+  }
+
+  .morenews__content {
+    width: 70%;
+    scroll-snap-align: start;
+  }
+
+  .sponsors__title {
+    font-size: 3rem;
+  }
+
+  .sponsors__three, .sponsors__two {
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+  }
+
+  .sponsor-img {
+    max-width: 100%;
+  }
+
+  .contact__tittle {
+    top: -90px;
+  }
+}
+
+
+
+
+
+
 </style>
 
