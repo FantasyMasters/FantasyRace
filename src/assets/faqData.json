@@ -1,0 +1,42 @@
+[
+  {
+    "question": "¿Cómo elijo mis pilotos?",
+    "answer": "Puedes seleccionar un equipo de 5 pilotos dentro del presupuesto."
+  },
+  {
+    "question": "¿Cómo se calculan los puntos?",
+    "answer": "Los puntos se asignan según el rendimiento en cada carrera."
+  },
+  {
+    "question": "¿Puedo cambiar mi equipo durante la temporada?",
+    "answer": "Sí, hay un número limitado de cambios por temporada."
+  },
+  {
+    "question": "¿Cuánto cuesta participar?",
+    "answer": "La participación en la liga es gratuita."
+  },
+  {
+    "question": "¿Cómo se asignan los premios?",
+    "answer": "Los premios se asignan a los mejores equipos al final de la temporada."
+  },
+  {
+    "question": "¿Qué pasa si un piloto se lesiona?",
+    "answer": "Si un piloto se lesiona, puedes reemplazarlo siguiendo las reglas de cambios de la temporada."
+  },
+  {
+    "question": "¿Cómo se manejan los empates?",
+    "answer": "En caso de empate, se utilizarán criterios adicionales como el número de victorias."
+  },
+  {
+    "question": "¿Puedo unirme a la liga en cualquier momento?",
+    "answer": "Sí, puedes unirte en cualquier momento, pero tus puntos comenzarán a contar desde la fecha de inscripción."
+  },
+  {
+    "question": "¿Hay algún límite de edad para participar?",
+    "answer": "No, la liga está abierta a participantes de todas las edades."
+  },
+  {
+    "question": "¿Cómo puedo contactar con el soporte?",
+    "answer": "Puedes contactar con el soporte a través del formulario de contacto en nuestro sitio web."
+  }
+]
