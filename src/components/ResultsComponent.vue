@@ -76,24 +76,18 @@ const calculateScore = () => {
   return score;
 };
 
-
 const score = computed(() => calculateScore());
 
 // Guardar score en Pinia y localStorage cada vez que cambien los valores relevantes
 watch([score, selectedYear, selectedRace, selectedConstructor, selectedDriver], () => {
   store.setScore(score.value);
-
-  // Guardar score en el historial del usuario (aunque sea 0)
-  if (store.user) {
-    store.addToUserHistory('score', score.value);
-  }
   
   // 🟢 Agregar los resultados de la carrera al historial del usuario
   if (podium.value.length) {
     store.addToUserHistory('races', selectedRace.value.raceName); // Agregar carrera al historial
     store.addToUserHistory('constructors', selectedConstructor.value.name); // Agregar constructor
     store.addToUserHistory('drivers', `${selectedDriver.value.givenName} ${selectedDriver.value.familyName}`); // Agregar piloto
-    store.addToUserHistory('score', score.value);
+    store.addToUserHistory('score', score.value, score.value);
   }
 });
 

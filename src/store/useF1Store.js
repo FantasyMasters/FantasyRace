@@ -13,7 +13,7 @@ export const useF1Store = defineStore('f1', {
       drivers: [],
       races: [],
       years: [],
-      score: []
+      score: 0,
     },
     error: null,
   }),
@@ -33,7 +33,7 @@ export const useF1Store = defineStore('f1', {
             drivers: response.data.drivers || [],
             races: response.data.races || [],
             years: response.data.years || [],
-            score: response.data.score || []
+            score: response.data.score
           };
 
           this.saveUserToStorage();
@@ -67,7 +67,7 @@ export const useF1Store = defineStore('f1', {
             drivers: this.user.drivers || [],
             races: this.user.races || [],
             years: this.user.years || [],
-            score: this.user.score || [],
+            score: this.user.score
           };
         }
       } catch (error) {
@@ -81,7 +81,7 @@ export const useF1Store = defineStore('f1', {
     },
 
     // 🟢 Guardar selección en historial y JSON Server
-    async addToUserHistory(type, value) {
+    async addToUserHistory(type, value, score) {
       if (!this.user) return;
 
       if (!this.userHistory[type].includes(value)) {
@@ -159,7 +159,7 @@ export const useF1Store = defineStore('f1', {
             drivers: response.data.drivers || [],
             races: response.data.races || [],
             years: response.data.years || [],
-            score: response.data.score || []
+            score: response.data.score
           };
         }
       } catch (error) {

@@ -59,7 +59,17 @@
        </ul>
         <p v-else>No score available</p>
       </div>
+
+      <div class="profile__history totals">
+        <h4>Total</h4>
+        <ul v-if="userHistory.score.length">
+          <li v-for="score in userHistory.score" :key="score">{{ score }}</li>
+       </ul>
+        <p v-else>No score available</p>
+      </div>
+
     </div>
+  
 
     <!-- Actions Section -->
     <div class="profile__actions">
@@ -208,6 +218,11 @@ const playAgain = () => {
 }
 
 .profile__history.clasification {
+  /* grid-column: 2 / 3; */
+  grid-row: 3;
+}
+
+.profile__history.totals {
   grid-column: 3 / 4;
   grid-row: 3;
 }
