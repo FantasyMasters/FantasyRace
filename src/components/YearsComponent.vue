@@ -18,7 +18,7 @@
   
   const store = useF1Store();
   const emit = defineEmits(["nextStep"]);
-  
+
   const years = computed(() => Array.from({ length: 26 }, (_, i) => 2000 + i));
   const selectedYear = computed({
     get: () => store.selectedYear,
@@ -35,7 +35,7 @@
   
   <style scoped>
 
-  /* Contenedor principal con la segunda imagen de fondo */
+ 
 .years__container {  
   height: 70vh;    
   width: 70vw;
@@ -92,20 +92,20 @@
   width: 30%;
 }
 
-/* Cambiar color de fondo y texto cuando el select está en foco */
+
 .Componentyears__select:focus {
   background-color: #fcffff; 
   outline: none;
   border: solid, 1.5px, rgb(255, 0, 0);
 }
-/*Opciones dentro del select */
+
 .Componentyears__select option {
   max-height: 50px; 
   overflow-y: auto;
     background-color: white; 
   color: black; 
 }
-/* Quitar el color azul de selección en algunos navegadores */
+
 .Componentyears__select option:hover,
 .Componentyears__select option:checked {
   background-color: #d32f2f; 

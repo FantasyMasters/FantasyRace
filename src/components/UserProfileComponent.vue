@@ -11,66 +11,63 @@
           <!-- Replace with an actual avatar if available -->
           <div class="avatar-placeholder"></div>
         </div>
-        <p><strong>Name:</strong> {{ user.name }}</p>
-        <p><strong>Last Name:</strong> {{ user.lastname }}</p>
+        <p><strong>Nombre:</strong> {{ user.name }}</p>
+        <p><strong>Apellido:</strong> {{ user.lastname }}</p>
         <p><strong>Nick:</strong> {{ user.nick }}</p>
-        <p><strong>Age:</strong> {{ user.age }}</p>
-        <p><strong>Country:</strong> {{ user.country }}</p>
+        <p><strong>Edad:</strong> {{ user.age }}</p>
+        <p><strong>Procedencia:</strong> {{ user.country }}</p>
         <p><strong>Email:</strong> {{ user.email }}</p>
       </div>
 
       <!-- History Sections -->
       <div class="profile__history seasons">
-        <h4>Years</h4>
+        <h4>Años</h4>
         <ul v-if="userHistory.years.length">
           <li v-for="year in userHistory.years" :key="year">{{ year }}</li>
         </ul>
-        <p v-else>No years available</p>
+        <p v-else>No seleccionado</p>
       </div>
 
       <div class="profile__history pilotos">
-        <h4>Races</h4>
+        <h4>Carreras</h4>
         <ul v-if="userHistory.races.length">
           <li v-for="race in userHistory.races" :key="race">{{ race }}</li>
         </ul>
-        <p v-else>No races available</p>
+        <p v-else>Sin seleccionar</p>
       </div>
 
       <div class="profile__history teams">
-        <h4>Constructors</h4>
+        <h4>Escuderias</h4>
         <ul v-if="userHistory.constructors.length">
           <li v-for="constructor in userHistory.constructors" :key="constructor">{{ constructor }}</li>
         </ul>
-        <p v-else>No constructors available</p>
+        <p v-else>Sin seleccionar</p>
       </div>
 
       <div class="profile__history tracks">
-        <h4>Drivers</h4>
+        <h4>Pilotos</h4>
         <ul v-if="userHistory.drivers.length">
           <li v-for="driver in userHistory.drivers" :key="driver">{{ driver }}</li>
         </ul>
-        <p v-else>No drivers available</p>
+        <p v-else>No seleccionado</p>
       </div>
 
       <div class="profile__history clasification">
-        <h4>Score</h4>
+        <h4>Puntuación</h4>
         <ul v-if="userHistory.score.length">
           <li v-for="score in userHistory.score" :key="score">{{ score }}</li>
        </ul>
-        <p v-else>No score available</p>
+        <p v-else>Sin puntuación</p>
       </div>
 
       <div class="profile__history totals">
         <h4>Total</h4>
-        <ul v-if="userHistory.score.length">
-          <li v-for="score in userHistory.score" :key="score">{{ score }}</li>
-       </ul>
-        <p v-else>No score available</p>
+        <p v-if="userHistory.score.length">Puntos: {{ totalScore }}</p>
+        <p v-else>Sin Puntuación</p>
       </div>
 
     </div>
   
-
     <!-- Actions Section -->
     <div class="profile__actions">
       <button @click="logout">Cerrar Sesión</button>
@@ -100,6 +97,10 @@ onMounted(() => {
 
 const user = computed(() => f1Store.user);
 const userHistory = computed(() => f1Store.userHistory);
+
+const totalScore = computed(() => {
+  return userHistory.value.score.reduce((acc, value) => acc + value, 0);
+});
 
 const logout = () => {
   localStorage.removeItem('user');
