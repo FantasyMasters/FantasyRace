@@ -134,7 +134,7 @@ watch(selectedYear, (newYear) => {
 /* Media Queries para tablets (1024px) */
 @media (max-width: 1024px) {
   .races__list {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     margin-top: 2rem;
   }
 
