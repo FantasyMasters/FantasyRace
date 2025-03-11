@@ -54,9 +54,11 @@ A public API has been used. These are the main endpoints:
     https://github.com/jolpica/jolpica-f1
 
 
+
+
 ## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) 
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
 ## Customize configuration
 
