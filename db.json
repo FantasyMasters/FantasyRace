@@ -47,7 +47,48 @@
       "country": "españa",
       "email": "nay@gmail.com",
       "password": "1234",
-      "profileImage": "@/assets/userimage.png"
+      "profileImage": "@/assets/userimage.png",
+      "years": [
+        2000
+      ],
+      "races": [
+        "San Marino Grand Prix"
+      ],
+      "constructors": [
+        "Ferrari"
+      ],
+      "drivers": [
+        "Michael Schumacher"
+      ],
+      "score": [
+        50
+      ]
+    },
+    {
+      "id": "b713",
+      "name": "David",
+      "lastname": "bustos",
+      "nick": "tomate",
+      "age": 25,
+      "country": "colombia",
+      "email": "david@gmail.com",
+      "password": "12345",
+      "profileImage": "@/assets/userimage.png",
+      "years": [
+        2000
+      ],
+      "races": [
+        "Spanish Grand Prix"
+      ],
+      "constructors": [
+        "McLaren"
+      ],
+      "drivers": [
+        "Mika Häkkinen"
+      ],
+      "score": [
+        68
+      ]
     }
   ],
   "selections": []
