@@ -118,7 +118,7 @@ const handleLinkClick = () => {
 }
 
 /* Media queries for responsive design */
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
   .menu__hamburger {
     display: flex;
     order: 3;
@@ -168,7 +168,7 @@ const handleLinkClick = () => {
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 720px) {
   .menu__container {
     padding: 10px;
   }

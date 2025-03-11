@@ -231,4 +231,11 @@ const goHome = () => {
     text-decoration: none;
     font-weight: bold;
 }
+/*medias queries*/
+@media screen and (max-width: 720px) {
+    .login__container {
+        width: 90%;
+    }
+}
+
 </style>

@@ -170,4 +170,49 @@ watch([score, selectedYear, selectedRace, selectedConstructor, selectedDriver], 
   font-weight: bold;
   margin-top: 5px;
 }
+
+/* Media Queries para pantallas menores a 720px */
+@media (max-width: 720px) {
+  .results {
+    height: auto; /* Ajusta la altura automáticamente */
+    padding: 10px; /* Reduce el padding */
+  }
+
+  /* Títulos */
+  .results__title, .results__subtitle, .results__top3 {
+    font-size: 1.5rem; 
+  }
+
+  /* Lista de podium */
+  .results__podium {
+    font-size: 1.2rem; 
+  }
+
+  .results__item {
+    font-size: 1rem; 
+    padding: 8px; 
+    margin: 3px 0; 
+   
+  }
+
+  /* Estilos de carga y error */
+  .results__loading, .results__error {
+    font-size: 1.2rem; 
+  }
+
+  /* Sección de selecciones */
+  .results__selection {
+    padding: 10px;
+    font-size: 1rem; 
+    max-width: 90%;
+  }
+
+  .results__selection p {
+    font-size: 1rem;
+  }
+}
+
+
+
+
 </style>

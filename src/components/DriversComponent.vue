@@ -137,6 +137,35 @@ const selectDriver = (driver) => {
   padding: 10px;
   border-radius: 8px;
 }
+
+/*media queries*/
+@media (max-width: 1024px) {
+  .drivers__list {
+    grid-template-columns: 1fr;
+  }
+  .drivers__list::before {
+    height: 100%;
+  }
+  .drivers__title{
+    font-size: 3rem;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .drivers__list {
+    grid-template-columns: 1fr;
+  }
+  .drivers__list::before {
+    height: 100%;
+  }
+  .drivers__title{
+    font-size: 2rem;
+  
+}
+}
+
+  
+
 </style>
 
   

@@ -95,6 +95,7 @@
 .footer__legal--copyright {
   font-size: 12px;
   text-align: center;
+  
 }
 /* Media queries para pantallas pequeñas */
 @media screen and (max-width: 720px) {
@@ -118,6 +119,7 @@
     flex-direction: column;
     gap: 1rem;
     margin-left: 0;
+    margin-bottom: 1rem;
   }
   
   .footer__legal-link {
