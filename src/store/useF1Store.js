@@ -1,165 +1,112 @@
-import { defineStore } from 'pinia';
-import axios from 'axios';
+import { defineStore } from 'pinia';  //This is from Pinia (a store for Vue.js). It helps save and manage app data.
+import axios from 'axios'; //This is used to make HTTP requests (get data from the server).
 
+//Hese are the user’s current selections, stores the logged-in user’s data
 export const useF1Store = defineStore('f1', {
   state: () => ({
     selectedYear: null,
     selectedRace: null,
     selectedConstructor: null,
     selectedDriver: null,
-    score: 0,
     user: null,
-    userHistory: {
+    userHistory: { //This keeps a list of past selections (teams, drivers, races, years, and scores).
       constructors: [],
       drivers: [],
       races: [],
-      years: []
+      years: [],
+      score: [],
     },
     error: null,
   }),
 
+  //This calculates the total score by adding all numbers in userHistory.score.
+  getters: {
+    totalScore(state) {
+      return state.userHistory.score.reduce((acc, value) => acc + value, 0);
+    },
+  },
+
+  //This section has different functions to get, save, and update data.
   actions: {
-    // 🟢 Cargar usuario y su historial desde JSON Server
-    async fetchUser(userId) {
+    async fetchUser(userId) {  // This function gets user data from a fake database (JSON Server).
       this.error = null;
       try {
         const response = await axios.get(`http://localhost:3000/users/${userId}`);
         if (response.data) {
-          this.user = response.data;
-
-          // Inicializar historial si no existe
-          this.userHistory = {
-            constructors: response.data.constructors || [],
-            drivers: response.data.drivers || [],
-            races: response.data.races || [],
-            years: response.data.years || []
-          };
-
-          this.saveUserToStorage();
+          this.setUser(response.data); //If the user exists, save the data inside this.user.
         } else {
           this.error = 'Usuario no encontrado';
           this.user = null;
         }
       } catch (error) {
         this.error = 'Error al obtener usuario: ' + error.message;
-        console.error('Error fetching user:', error);
       }
     },
 
-    // 🟢 Guardar usuario en LocalStorage
-    saveUserToStorage() {
-      try {
-        localStorage.setItem('user', JSON.stringify(this.user));
-      } catch (error) {
-        console.error('Error guardando usuario en localStorage:', error);
-      }
-    },
-
-    // 🟢 Cargar usuario desde LocalStorage
-    loadUserFromStorage() {
-      try {
-        const user = localStorage.getItem('user');
-        if (user) {
-          this.user = JSON.parse(user);
-          this.userHistory = {
-            constructors: this.user.constructors || [],
-            drivers: this.user.drivers || [],
-            races: this.user.races || [],
-            years: this.user.years || []
-          };
-        }
-      } catch (error) {
-        console.error('Error cargando usuario desde localStorage:', error);
-      }
-    },
-
+    // Save the user’s history (teams, drivers, races, etc.) and Call saveUserToStorage() to store user data in localStorage.
     setUser(user) {
       this.user = user;
+      this.userHistory = { 
+        constructors: user.constructors || [],
+        drivers: user.drivers || [],
+        races: user.races || [],
+        years: user.years || [],
+        score: user.score || [],
+      };
       this.saveUserToStorage();
     },
 
-    // 🟢 Guardar selección en historial y JSON Server
-    async addToUserHistory(type, value) {
-      if (!this.user) return;
+    saveUserToStorage() {
+      localStorage.setItem('user', JSON.stringify(this.user));
+    },
 
-      if (!this.userHistory[type].includes(value)) {
-        this.userHistory[type].push(value);
+    //Load user fromLocalStore and save in to user
+    loadUserFromStorage() {
+      const user = localStorage.getItem('user');
+      if (user) {
+        this.setUser(JSON.parse(user));
+      }
+    },
+    //Here adds elections to userHistory
+    async addToUserHistory(type, value, score) {
+      if (!this.user || this.userHistory[type].includes(value)) return;
+      
+      this.userHistory[type].push(value);
+      this.user[type] = [...(this.user[type] || []), value];
 
-        if (!this.user[type]) {
-          this.user[type] = []; // Asegurar que el array existe
-        }
-
-        this.user[type].push(value);
-
-        try {
-          await axios.put(`http://localhost:3000/users/${this.user.id}`, this.user);
-          this.saveUserToStorage(); // Guardar cambios en LocalStorage también
-        } catch (error) {
-          console.error(`Error actualizando ${type}:`, error);
-        }
+      if (score !== undefined && !this.userHistory.score.includes(score)) {
+        this.userHistory.score.push(score);
+        this.user.score = [...this.userHistory.score];
+      }
+  //Here updates the userStorage data
+      this.saveUserToStorage();
+      try {
+        await axios.put(`http://localhost:3000/users/${this.user.id}`, this.user);
+      } catch (error) {
+        console.error(`Error actualizando ${type}:`, error);
       }
     },
 
-    // 🟢 Métodos para guardar selecciones
-    setYear(year) {
-      this.selectedYear = year;
-      this.userHistory.years.push(year);
-      this.addToUserHistory('years', year); // Guarda en JSON Server
-    },
-
-    setRace(race) {
-      this.selectedRace = race;
-      this.userHistory.races.push(race.raceName); // Solo guarda el nombre de la carrera
-      this.addToUserHistory('races', race.raceName); // Guarda en JSON Server
-    },
-
-    setConstructor(constructor) {
-      this.selectedConstructor = constructor;
-      this.userHistory.constructors.push(constructor.name); // Solo guarda el nombre del constructor
-      this.addToUserHistory('constructors', constructor.name); // Guarda en JSON Server
-    },
-
-    setDriver(driver) {
+    //Here saves the numbers and names of the years complements
+    setYear(year) { this.addToUserHistory('years', year); this.selectedYear = year; },
+    setRace(race) { this.addToUserHistory('races', race.raceName); this.selectedRace = race; },
+    setConstructor(constructor) { this.addToUserHistory('constructors', constructor.name); this.selectedConstructor = constructor; },
+    setDriver(driver) { 
+      const fullName = `${driver.givenName} ${driver.familyName}`;
+      this.addToUserHistory('drivers', fullName);
       this.selectedDriver = driver;
-      const fullName = driver.givenName + " " + driver.familyName; // Nombre completo del piloto
-      this.userHistory.drivers.push(fullName); // Guarda solo el nombre completo del piloto
-      this.addToUserHistory('drivers', fullName); // Guarda en JSON Server
     },
+    setScore(score) { this.addToUserHistory('score', score); },
 
-    // 🟢 Guardar en LocalStorage
-    saveToLocalStorage(key, value) {
-      try {
-        localStorage.setItem(key, JSON.stringify(value));
-      } catch (error) {
-        console.error(`Error guardando ${key}:`, error);
-      }
-    },
-
-    // 🟢 Cargar historial desde JSON Server
     async loadUserSelections(userId) {
-      try {
-        const response = await axios.get(`http://localhost:3000/users/${userId}`);
-        if (response.data) {
-          this.userHistory = {
-            constructors: response.data.constructors || [],
-            drivers: response.data.drivers || [],
-            races: response.data.races || [],
-            years: response.data.years || []
-          };
-        }
-      } catch (error) {
-        console.error('Error cargando historial del usuario:', error);
-      }
+      await this.fetchUser(userId);
     },
 
-    // 🟢 Limpiar selecciones
+    //This clear the user selections if they want to game again
     clearSelections() {
-      this.selectedYear = null;
-      this.selectedRace = null;
-      this.selectedConstructor = null;
-      this.selectedDriver = null;
-      this.score = 0;
-      ['year', 'race', 'constructor', 'driver', 'score'].forEach(key => localStorage.removeItem(key));
+      this.selectedYear = this.selectedRace = this.selectedConstructor = this.selectedDriver = null;
+      this.userHistory = { constructors: [], drivers: [], races: [], years: [], score: [] };
+      localStorage.removeItem('user');
     }
   }
 });

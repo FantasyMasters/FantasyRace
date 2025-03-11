@@ -20,6 +20,11 @@
     justify-content: center;
     align-items: center;
     place-items: center;
-    z-index: 10001; /* Para que el contenido del formulario esté encima */
+  }
+  @media (max-width: 720px) {
+    .user-profile {
+      height: auto;
+    }
+      
   }
 </style>

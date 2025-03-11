@@ -11,7 +11,7 @@
       <h3 class="results__top3">Top 3 - Podium</h3>
       <ul class="results__list">
         <li v-for="result in podium" :key="result.position" class="results__item">
-          <strong>{{ result.position }}º</strong> - 
+          <strong>{{ result.position }}</strong> - 
           {{ result.Driver.givenName }} {{ result.Driver.familyName }} ({{ result.Constructor.name }})
         </li>
       </ul>
@@ -32,7 +32,7 @@
 </template>
 
 <script setup>
-import { computed, watch} from 'vue';
+import { computed, watch } from 'vue';
 import { useF1Store } from '../store/useF1Store';
 import { useFetchApi } from '../composables/useFetchApi';
 
@@ -81,7 +81,16 @@ const score = computed(() => calculateScore());
 // Guardar score en Pinia y localStorage cada vez que cambien los valores relevantes
 watch([score, selectedYear, selectedRace, selectedConstructor, selectedDriver], () => {
   store.setScore(score.value);
+  
+  // 🟢 Agregar los resultados de la carrera al historial del usuario
+  if (podium.value.length) {
+    store.addToUserHistory('races', selectedRace.value.raceName); // Agregar carrera al historial
+    store.addToUserHistory('constructors', selectedConstructor.value.name); // Agregar constructor
+    store.addToUserHistory('drivers', `${selectedDriver.value.givenName} ${selectedDriver.value.familyName}`); // Agregar piloto
+    store.addToUserHistory('score', score.value, score.value);
+  }
 });
+
 </script>
 
 <style scoped>
@@ -212,7 +221,5 @@ watch([score, selectedYear, selectedRace, selectedConstructor, selectedDriver], 
   }
 }
 
-
-
-
 </style>
+

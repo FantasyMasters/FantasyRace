@@ -19,10 +19,10 @@ import { useF1Store } from "@/store/useF1Store";
 const steps = [YearsComponent, RacesComponent, ConstructorComponent, DriversComponent, ResultsComponent];
 const currentStep = ref(0);
 
-// Computed  para que se pueda cambiar de uno a otro
+// Computed to change from one to another component
 const currentComponent = computed(() => steps[currentStep.value]);
 
-//Creamos una condicion para cambiar de componente.
+//To iterate and change from one component to another
 const nextStep = () => {
   if (currentStep.value < steps.length - 1) {
     currentStep.value++;
@@ -31,7 +31,7 @@ const nextStep = () => {
 </script>
 
 <style scoped>
-/* Estilos generales */
+
 .years {
   display: flex;
   justify-content: center; 
@@ -41,7 +41,7 @@ const nextStep = () => {
   position: relative;
 }
 
-/*los componentes estén encima */
+
 .years-view {
   position: relative;
   z-index: 2; 

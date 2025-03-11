@@ -98,7 +98,7 @@ const handleLinkClick = () => {
 .menu__links {
   display: flex;
   gap: 20px;
-  flex-grow: 1; 
+  /* flex-grow: 1;  */
   justify-content: center;
   align-items: center;
 }
@@ -114,7 +114,7 @@ const handleLinkClick = () => {
 }
 
 .menu__link--login {
-  margin-left: auto;
+  margin-left: 100px;
 }
 
 /* Media queries for responsive design */
