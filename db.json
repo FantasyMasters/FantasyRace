@@ -12,19 +12,38 @@
       "profileImage": "/assets/userimage.png",
       "constructors": [
         "Red Bull",
-        "Mercedes"
+        "Mercedes",
+        "BAR",
+        "BAR",
+        "Ferrari",
+        "Ferrari"
       ],
       "drivers": [
         "Max Verstappen",
-        "Lewis Hamilton"
+        "Lewis Hamilton",
+        "Jacques Villeneuve",
+        "Jacques Villeneuve",
+        "Felipe Massa",
+        "Felipe Massa"
       ],
       "races": [
         "Monaco GP",
-        "Silverstone GP"
+        "Silverstone GP",
+        "European Grand Prix",
+        "European Grand Prix",
+        "Spanish Grand Prix",
+        "Spanish Grand Prix"
       ],
       "years": [
         "2022",
-        "2023"
+        "2023",
+        2002,
+        2002,
+        2008,
+        2008
+      ],
+      "score": [
+        61
       ]
     },
     {
