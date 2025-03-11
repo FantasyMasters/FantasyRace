@@ -16,7 +16,9 @@
         "BAR",
         "BAR",
         "Ferrari",
-        "Ferrari"
+        "Ferrari",
+        "Williams",
+        "Williams"
       ],
       "drivers": [
         "Max Verstappen",
@@ -24,7 +26,9 @@
         "Jacques Villeneuve",
         "Jacques Villeneuve",
         "Felipe Massa",
-        "Felipe Massa"
+        "Felipe Massa",
+        "Nico Rosberg",
+        "Nico Rosberg"
       ],
       "races": [
         "Monaco GP",
@@ -32,7 +36,9 @@
         "European Grand Prix",
         "European Grand Prix",
         "Spanish Grand Prix",
-        "Spanish Grand Prix"
+        "Spanish Grand Prix",
+        "French Grand Prix",
+        "French Grand Prix"
       ],
       "years": [
         "2022",
@@ -40,7 +46,9 @@
         2002,
         2002,
         2008,
-        2008
+        2008,
+        2007,
+        2007
       ],
       "score": [
         61
@@ -55,7 +63,43 @@
       "country": "España",
       "email": "pepita@gmail.com",
       "password": "12345",
-      "profileImage": "@/assets/userimage.png"
+      "profileImage": "@/assets/userimage.png",
+      "years": [
+        2006,
+        2021,
+        2021,
+        2024,
+        2023,
+        2023
+      ],
+      "races": [
+        "French Grand Prix",
+        "Monaco Grand Prix",
+        "Monaco Grand Prix",
+        "Australian Grand Prix",
+        "Dutch Grand Prix",
+        "Dutch Grand Prix"
+      ],
+      "constructors": [
+        "Toro Rosso",
+        "McLaren",
+        "McLaren",
+        "Ferrari",
+        "Haas F1 Team",
+        "Haas F1 Team"
+      ],
+      "drivers": [
+        "Vitantonio Liuzzi",
+        "Lando Norris",
+        "Lando Norris",
+        "Carlos Sainz",
+        "Nico Hülkenberg",
+        "Nico Hülkenberg"
+      ],
+      "score": [
+        30,
+        68
+      ]
     },
     {
       "id": "295e",

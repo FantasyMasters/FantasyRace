@@ -1,9 +1,9 @@
 # fantasyRace
-<img src="src/assets/logo.png" alt="" width=100px >
+<img src="src/assets/logo.png" alt="logo Fantasy Race" width="300px" >
 
-FantasyRace
 
-General Features:
+
+## General Features:
 
     • JavaScript project with the Vue.js framework, using Vite (development environment), router, Pinia, Cypress, and a composable.
     • Jira: Tool for creating, assigning, and tracking tasks within the project.
@@ -11,7 +11,7 @@ General Features:
     • Github: Shared project repository with version control using Git. An organization has been created, roles have been assigned within the organization, and work has been done on branches using pull requests to verify content before merging with the main branch.
     • Responsive CSS design: Using relative measurements and media queries with breakpoints for mobile, tablet, and desktop views.
 
-Project Description:
+## Project Description:
 
     Our project is a game based on the results of Formula 1 competitions or Grand Prix races held from the year 2000 to the present.
     The game consists of the following steps:
@@ -33,7 +33,7 @@ Project Description:
 
     User must be registered and logged in before starting a game or accessing their data.
 
-Technical part of the project
+## Technical part of the project
 
     1- Various pages or views have been created in src/views: home, login, registration, ratings, etc.
     2- There are components that are displayed in the different views: src/components:
