@@ -129,4 +129,57 @@ watch(selectedYear, (newYear) => {
   padding: 10px;
   border-radius: 8px;
 }
+
+/* Media Queries para tablets (1024px) */
+@media (max-width: 1024px) {
+  .races__list {
+    grid-template-columns: repeat(3, 2fr);
+    margin-top: 2rem;
+  }
+
+  .races__title {
+    font-size: 3rem;
+    padding-top: 40px;
+  }
+
+  .races__item {
+    font-size: 0.8rem;
+  }
+
+.races__item:hover {
+  box-shadow: none;
+  transform: none;
+}
+}
+
+/* Media Queries para móviles (menos de 720px) */
+@media (max-width: 720px) { 
+  .races__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+    height: 80vh; 
+    overflow-y: auto; 
+    width: 200%; 
+  }
+
+  .races__title {
+    font-size: 1.8rem;
+    padding-top: 20px;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .races__item {
+    font-size: 1rem;
+    width: 50%;
+    margin-bottom: 10px;
+  }
+  
+  .races__item:hover {
+    box-shadow: none;
+    transform: none;
+  }
+}
 </style>

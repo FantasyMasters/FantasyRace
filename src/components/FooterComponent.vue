@@ -95,5 +95,35 @@
 .footer__legal--copyright {
   font-size: 12px;
   text-align: center;
+  
+}
+/* Media queries para pantallas pequeñas */
+@media screen and (max-width: 720px) {
+  .footer__top {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem 0;
+  }
+  
+  .footer__logo img {
+    height: 50px;
+    margin: 1rem 0;
+  }
+  
+  .footer__bottom {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .footer__legal {
+    flex-direction: column;
+    gap: 1rem;
+    margin-left: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .footer__legal-link {
+    padding: 0.5rem 0;
+  }
 }
 </style>

@@ -47,25 +47,7 @@
       "country": "españa",
       "email": "nay@gmail.com",
       "password": "1234",
-      "profileImage": "@/assets/userimage.png",
-      "years": [
-        2006,
-        2007
-      ],
-      "races": [
-        "United States Grand Prix",
-        "Chinese Grand Prix"
-      ],
-      "constructors": [
-        "McLaren"
-      ],
-      "drivers": [
-        "Kimi Räikkönen",
-        "Fernando Alonso"
-      ],
-      "score": [
-        36
-      ]
+      "profileImage": "@/assets/userimage.png"
     }
   ],
   "selections": []

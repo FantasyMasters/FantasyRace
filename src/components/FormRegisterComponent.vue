@@ -209,4 +209,46 @@ const previewImage = (event) => {
     font-size: 1rem;
     margin-top: 10px;
 }
+/*media queries*/
+/* Media Query para pantallas menores a 1024px */
+@media (max-width: 1024px) {
+
+  
+
+
+  .register__button {
+    width: 50%; /* Aumenta el ancho del botón */
+  }
+}
+
+/* Media Query para pantallas menores a 720px */
+@media (max-width: 720px) {
+
+  
+
+  .register__input-group {
+    margin-bottom: 15px; /* Reduce el margen inferior */
+  }
+
+  .register__input {
+    font-size: 0.9rem; /* Reduce el tamaño de la fuente */
+    padding: 8px; /* Reduce el padding */
+  }
+
+  .register__button {
+    width: 80%; /* Aumenta el ancho del botón */
+    font-size: 1rem; /* Reduce el tamaño de la fuente */
+    padding: 8px; /* Reduce el padding */
+  }
+
+  .profile__label {
+    width: 80px; /* Reduce el tamaño de la imagen de perfil */
+    height: 80px;
+  }
+
+  .error-message {
+    font-size: 0.9rem; /* Reduce el tamaño de la fuente del mensaje de error */
+  }
+}
+
 </style>
