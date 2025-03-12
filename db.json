@@ -89,6 +89,44 @@
       "score": [
         68
       ]
+    },
+    {
+      "id": "eb59",
+      "name": "Gaizka",
+      "lastname": "Brujo",
+      "nick": "Akelarre",
+      "age": 41,
+      "country": "España",
+      "email": "gaizka@gmail.com",
+      "password": "123456",
+      "profileImage": "@/assets/userimage.png",
+      "years": [
+        2002,
+        2003,
+        2010,
+        2008
+      ],
+      "races": [
+        "Brazilian Grand Prix",
+        "Australian Grand Prix",
+        "Belgian Grand Prix",
+        "Malaysian Grand Prix"
+      ],
+      "constructors": [
+        "Williams",
+        "Ferrari",
+        "McLaren"
+      ],
+      "drivers": [
+        "Ralf Schumacher",
+        "Michael Schumacher",
+        "Felipe Massa",
+        "Heikki Kovalainen"
+      ],
+      "score": [
+        36,
+        30
+      ]
     }
   ],
   "selections": []
