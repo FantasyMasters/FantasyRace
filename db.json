@@ -11,20 +11,29 @@
       "password": "123456",
       "profileImage": "/assets/userimage.png",
       "constructors": [
-        "Red Bull",
-        "Mercedes"
+        "BMW Sauber",
+        "McLaren",
+        "Ferrari"
       ],
       "drivers": [
-        "Max Verstappen",
-        "Lewis Hamilton"
+        "Nick Heidfeld",
+        "Mika Häkkinen",
+        "Michael Schumacher"
       ],
       "races": [
-        "Monaco GP",
-        "Silverstone GP"
+        "Spanish Grand Prix",
+        "Spanish Grand Prix",
+        "San Marino Grand Prix"
       ],
       "years": [
-        "2022",
-        "2023"
+        2009,
+        2000,
+        2000
+      ],
+      "score": [
+        0,
+        68,
+        50
       ]
     },
     {
@@ -36,7 +45,37 @@
       "country": "España",
       "email": "pepita@gmail.com",
       "password": "12345",
-      "profileImage": "@/assets/userimage.png"
+      "profileImage": "@/assets/userimage.png",
+      "years": [
+        2001,
+        2000,
+        2008,
+        2021
+      ],
+      "score": [
+        60,
+        0,
+        0,
+        0
+      ],
+      "races": [
+        "Australian Grand Prix",
+        "Hungarian Grand Prix",
+        "Japanese Grand Prix",
+        "Saudi Arabian Grand Prix"
+      ],
+      "constructors": [
+        "Ferrari",
+        "BAR",
+        "Toro Rosso",
+        "McLaren"
+      ],
+      "drivers": [
+        "Michael Schumacher",
+        "Jacques Villeneuve",
+        "Sébastien Bourdais",
+        "Daniel Ricciardo"
+      ]
     },
     {
       "id": "295e",
@@ -88,6 +127,43 @@
       ],
       "score": [
         68
+      ]
+    },
+    {
+      "id": "2124",
+      "name": "Narciso",
+      "lastname": "Rodriguez",
+      "nick": "nano",
+      "age": 45,
+      "country": "Spain",
+      "email": "nano@gmail.com",
+      "password": "123",
+      "profileImage": "@/assets/userimage.png",
+      "years": [
+        2019,
+        2010,
+        2010,
+        2009
+      ],
+      "races": [
+        "Hungarian Grand Prix",
+        "Spanish Grand Prix",
+        "Spanish Grand Prix"
+      ],
+      "constructors": [
+        "Williams",
+        "Lotus",
+        "Lotus",
+        "Ferrari"
+      ],
+      "drivers": [
+        "George Russell",
+        "Jarno Trulli",
+        "Jarno Trulli",
+        "Felipe Massa"
+      ],
+      "score": [
+        0
       ]
     }
   ],
