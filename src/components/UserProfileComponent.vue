@@ -103,8 +103,10 @@ const totalScore = computed(() => {
 });
 
 const logout = () => {
+  console.log("Eliminando usuario...");
   localStorage.removeItem('user');
   f1Store.setUser(null);
+  console.log("Navegando a home...");
   router.push('/');
 };
 

@@ -1,7 +1,7 @@
 <template>
 
 <main class="main">
-  <!-- Sección de la imagen principal -->
+  
   <section class="hero">
     <img src="../assets/f1_2.png" alt="Liga Fantasy" class="hero__image">
     <div class="hero__content">
@@ -10,7 +10,6 @@
     </div>
   </section>
 
-  <!-- Sección de noticias -->
   <section class="news">
     <div class="news__content">
       <h2 class="news__title">ÚLTIMAS NOTICIAS</h2>
