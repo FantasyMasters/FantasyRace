@@ -116,8 +116,8 @@
     border-color: #888888;
   }
 
-
-/* Media Queries para tablets (1024px) */
+/* Media Queries para tablets ( 1024px) */
+/* Media Queries for tablets ( below 1024px) */
 @media (max-width: 1024px) {
   .years__container {
     height: 60vh; 
@@ -139,8 +139,8 @@
     font-size: 1.2rem;
   }
 }
-
-/* Media Queries para móviles (menos de 720px) */
+/* Media Queries para movil (menos de 720px) */
+/* Media Queries for mobile (below 720px) */
 @media (max-width: 720px) {
   .years__container {
     height: 50vh; 

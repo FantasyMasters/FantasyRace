@@ -51,13 +51,13 @@ const apiUrl = computed(() =>
 );
 
 const { data, isLoading } = useFetchApi(apiUrl);
-
+// Tres primeras posiciones en el podio
 // Three first position in the podium
 const podium = computed(() => {
   return data.value?.RaceTable?.Races[0]?.Results?.slice(0, 3) || [];
 });
-
-// Calculates the score
+// Calcular la puntuación segun las selecciones realizadas
+// Calculate score based on user selections
 const calculateScore = () => {
   if (!selectedDriver.value || !selectedConstructor.value || !podium.value.length) return 0;
 
@@ -79,7 +79,7 @@ const calculateScore = () => {
 const score = computed(() => calculateScore());
 
 // Guardar score en Pinia y localStorage cada vez que cambien los valores relevantes
-//Saves score on Pinia and localStorage
+//Saves score on Pinia and localStorage when values change
 watch([score, selectedYear, selectedRace, selectedConstructor, selectedDriver], () => {
   store.setScore(score.value);
   
@@ -179,20 +179,20 @@ watch([score, selectedYear, selectedRace, selectedConstructor, selectedDriver], 
   font-weight: bold;
   margin-top: 5px;
 }
-
+/* Media Queries for screen smaller than 720px */
 /* Media Queries para pantallas menores a 720px */
 @media (max-width: 720px) {
   .results {
-    height: auto; /* Ajusta la altura automáticamente */
-    padding: 10px; /* Reduce el padding */
+    height: auto; /* Ajusta la altura automáticamente - Adjust height automatically */
+    padding: 10px; /* Reduce el padding - Reduce padding*/
   }
 
-  /* Títulos */
+  /* Títulos -Titles*/
   .results__title, .results__subtitle, .results__top3 {
     font-size: 1.5rem; 
   }
 
-  /* Lista de podium */
+  /* Lista de podio - Podium list*/
   .results__podium {
     font-size: 1.2rem; 
   }
@@ -203,13 +203,13 @@ watch([score, selectedYear, selectedRace, selectedConstructor, selectedDriver], 
     margin: 3px 0; 
    
   }
-
   /* Estilos de carga y error */
+  /* Styles for loading and error*/
   .results__loading, .results__error {
     font-size: 1.2rem; 
   }
-
   /* Sección de selecciones */
+  /* Selection section */
   .results__selection {
     padding: 10px;
     font-size: 1rem; 

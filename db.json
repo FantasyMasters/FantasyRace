@@ -10,30 +10,39 @@
       "email": "john.doe@example.com",
       "password": "123456",
       "profileImage": "/assets/userimage.png",
+	  "years": [
+        2009,
+        2000,
+        2000,
+        2001,
+        2001
+      ],
+	   "races": [
+        "Spanish Grand Prix",
+        "Spanish Grand Prix",
+        "San Marino Grand Prix",
+        "Austrian Grand Prix",
+        "Austrian Grand Prix"
+      ],
       "constructors": [
         "BMW Sauber",
         "McLaren",
-        "Ferrari"
+        "Ferrari",
+        "Arrows",
+        "Arrows"
       ],
       "drivers": [
         "Nick Heidfeld",
         "Mika Häkkinen",
-        "Michael Schumacher"
-      ],
-      "races": [
-        "Spanish Grand Prix",
-        "Spanish Grand Prix",
-        "San Marino Grand Prix"
-      ],
-      "years": [
-        2009,
-        2000,
-        2000
+        "Michael Schumacher",
+        "Enrique Bernoldi",
+        "Enrique Bernoldi"
       ],
       "score": [
         0,
         68,
-        50
+        50,
+		0
       ]
     },
     {
@@ -52,12 +61,6 @@
         2008,
         2021
       ],
-      "score": [
-        60,
-        0,
-        0,
-        0
-      ],
       "races": [
         "Australian Grand Prix",
         "Hungarian Grand Prix",
@@ -75,6 +78,12 @@
         "Jacques Villeneuve",
         "Sébastien Bourdais",
         "Daniel Ricciardo"
+      ],
+	  "score": [
+        60,
+        0,
+        0,
+        0
       ]
     },
     {
@@ -130,44 +139,6 @@
       ]
     },
     {
-      "id": "eb59",
-      "name": "Gaizka",
-      "lastname": "Brujo",
-      "nick": "Akelarre",
-      "age": 41,
-      "country": "España",
-      "email": "gaizka@gmail.com",
-      "password": "123456",
-      "profileImage": "@/assets/userimage.png",
-      "years": [
-        2002,
-        2003,
-        2010,
-        2008
-      ],
-      "races": [
-        "Brazilian Grand Prix",
-        "Australian Grand Prix",
-        "Belgian Grand Prix",
-        "Malaysian Grand Prix"
-      ],
-      "constructors": [
-        "Williams",
-        "Ferrari",
-        "McLaren"
-      ],
-      "drivers": [
-        "Ralf Schumacher",
-        "Michael Schumacher",
-        "Felipe Massa",
-        "Heikki Kovalainen"
-      ],
-      "score": [
-        36,
-        30
-      ]
-    },
-    {
       "id": "2124",
       "name": "Narciso",
       "lastname": "Rodriguez",
@@ -186,7 +157,8 @@
       "races": [
         "Hungarian Grand Prix",
         "Spanish Grand Prix",
-        "Spanish Grand Prix"
+        "Spanish Grand Prix",
+		"Saudi Arabian Grand Prix"
       ],
       "constructors": [
         "Williams",
@@ -201,9 +173,11 @@
         "Felipe Massa"
       ],
       "score": [
-        0
+        0,
+		0,
+		0,
+		0
       ]
     }
-  ],
-  "selections": []
+  ]
 }

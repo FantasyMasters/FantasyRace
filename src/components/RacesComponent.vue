@@ -129,8 +129,8 @@ watch(selectedYear, (newYear) => {
   padding: 10px;
   border-radius: 8px;
 }
-
 /* Media Queries para tablets (1024px) */
+/* Media Queries for tablets (1024px) */
 @media (max-width: 1024px) {
   .races__list {
     grid-template-columns: repeat(3, 2fr);
@@ -151,8 +151,8 @@ watch(selectedYear, (newYear) => {
   transform: none;
 }
 }
-
-/* Media Queries para móviles (menos de 720px) */
+/* Media Queries para móviles (menos de 720px)*/
+/* Media Queries for mobile (below 720px) */
 @media (max-width: 720px) { 
   .races__list {
     display: flex;

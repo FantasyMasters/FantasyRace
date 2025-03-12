@@ -4,7 +4,7 @@
         <template #form>
             <form @submit.prevent="handleRegister" class="register__form">
                 <div class="register__container">
-                    <!-- Imagen de perfil -->
+                    <!-- Imagen de perfil --Profile image -->
                     <div class="register__profile">
                         <input type="file" id="profilePic" @change="previewImage" hidden>
                         <label for="profilePic" class="profile__label">
@@ -13,7 +13,7 @@
                         </label>
                     </div>
 
-                    <!-- Campos del formulario -->
+                    <!-- Campos del formulario -- Form inputs-->
                     <div class="register__input-group">
                         <label for="name">Name</label>
                         <input type="text" id="name" v-model="name" required class="register__input">
@@ -69,7 +69,7 @@ import { useRouter } from 'vue-router';
 import axios from 'axios';
 import { useF1Store } from '@/store/useF1Store';
 import LoginComponent from './LoginComponent.vue';
-defineEmits(['close']); // Declaramos el evento emitido
+defineEmits(['close']); // Declaramos el evento emitido -- - Declare emited event 
 
 
 const name = ref('');
@@ -85,7 +85,7 @@ const errorMessage = ref('');
 const router = useRouter();
 const f1Store = useF1Store();
 
-// Validar si el usuario ya existe antes de registrarlo
+// Validar si el usuario ya existe antes de registrarlo -- Validate user before registering
 const handleRegister = async () => {
     if (password.value !== confirmPassword.value) {
         errorMessage.value = 'Passwords do not match';
@@ -104,7 +104,7 @@ const handleRegister = async () => {
         console.error('Error checking user:', error);
     }
 
-    // Crear el objeto del usuario
+    // Crear el objeto del usuario -- Create user object
     const newUser = {
         name: name.value,
         lastname: lastname.value,
@@ -118,15 +118,15 @@ const handleRegister = async () => {
 
     try {
         const response = await axios.post('http://localhost:3000/users', newUser);
-        f1Store.setUser(response.data); // Guarda el usuario en el store correctamente
-        router.push('/user-profile'); // Redirige al perfil
+        f1Store.setUser(response.data); // Guarda el usuario en el store correctamente -- Save user
+        router.push('/user-profile'); // Redirige al perfil - Redirect to profile
     } catch (error) {
         console.error('Error registering user:', error);
         errorMessage.value = 'An error occurred';
     }
 };
 
-// Función para previsualizar la imagen de perfil
+// Función para previsualizar la imagen de perfil- function to show profile image
 const previewImage = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -210,44 +210,44 @@ const previewImage = (event) => {
     margin-top: 10px;
 }
 /*media queries*/
-/* Media Query para pantallas menores a 1024px */
+/* Media Query para pantallas menores a 1024px -- Media Query for screens smaller than 1024px */
 @media (max-width: 1024px) {
 
   
 
 
   .register__button {
-    width: 50%; /* Aumenta el ancho del botón */
+    width: 50%; /* Aumenta el ancho del botón - Increase button width */
   }
 }
 
-/* Media Query para pantallas menores a 720px */
+/* Media Query para pantallas menores a 720px -- Media Query for screens smaller than 720px */
 @media (max-width: 720px) {
 
   
 
   .register__input-group {
-    margin-bottom: 15px; /* Reduce el margen inferior */
+    margin-bottom: 15px; /* Reduce el margen inferior -- Decrease button width */
   }
 
   .register__input {
-    font-size: 0.9rem; /* Reduce el tamaño de la fuente */
-    padding: 8px; /* Reduce el padding */
+    font-size: 0.9rem; /* Reduce el tamaño de la fuente -- Decrease font size */
+    padding: 8px; /* Reduce el padding -- Decrease padding */
   }
 
   .register__button {
-    width: 80%; /* Aumenta el ancho del botón */
-    font-size: 1rem; /* Reduce el tamaño de la fuente */
-    padding: 8px; /* Reduce el padding */
+    width: 80%; /* Aumenta el ancho del botón -- Increase button width */
+    font-size: 1rem; /* Reduce el tamaño de la fuente -- Decrease font size */
+    padding: 8px; /* Reduce el padding -- Decrease padding */
   }
 
   .profile__label {
-    width: 80px; /* Reduce el tamaño de la imagen de perfil */
+    width: 80px; /* Reduce el tamaño de la imagen de perfil-- reduce size of profile image*/
     height: 80px;
   }
 
   .error-message {
-    font-size: 0.9rem; /* Reduce el tamaño de la fuente del mensaje de error */
+    font-size: 0.9rem; /* Reduce el tamaño de la fuente del mensaje de error -- Reduce size of font for error message*/
   }
 }
 

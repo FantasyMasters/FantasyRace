@@ -41,8 +41,8 @@ const apiUrl = computed(() =>
 );
 
 const { data, isLoading } = useFetchApi(apiUrl);
-
 // Filtrar los pilotos del constructor seleccionado
+// Filter for drivers of the selected team
 const drivers = computed(() => {
   if (!selectedConstructor.value) return [];
   const results = data.value?.RaceTable?.Races[0]?.Results || [];

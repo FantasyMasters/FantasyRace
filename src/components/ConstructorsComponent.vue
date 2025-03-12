@@ -41,16 +41,17 @@ const apiUrl = computed(() =>
 );
 
 const { data, isLoading } = useFetchApi(apiUrl);
-
+// Filtro para constructores
 // Aply filters to the constructors
 const constructors = computed(() => {
   const results = data.value?.RaceTable?.Races[0]?.Results || [];
   const topConstructors = results.slice(0, 20).map((result) => result.Constructor);
-  
+  // Eminina duplicados en el array
   // Dele the duplicates
   const uniqueConstructors = Array.from(new Map(topConstructors.map((c) => [c.constructorId, c])).values());
   
-  // Appears randomly in the page
+  // Muestra resultados de forma aleatoria
+  // Random order for results in grid
   return uniqueConstructors.sort(() => Math.random() - 0.5);
 });
 
@@ -141,6 +142,7 @@ const selectConstructor = (constructor) => {
 }
 /*media queries*/
 /* Media Query para pantallas menores a 1024px */
+/* Media Query for screens smaller than 1024px */
 @media (max-width: 1024px) {
   .constructors__list {
     grid-template-columns: repeat(3, 1fr); 
@@ -166,6 +168,7 @@ const selectConstructor = (constructor) => {
 }
 
 /* Media Query para pantallas menores a 720px (móviles) */
+/* Media Query for screens smaller than 720px (mobile) */
 @media (max-width: 720px) {
   .constructors__list {
     display: flex;

@@ -15,9 +15,9 @@
       </div>
 
       <div class="footer__links">
-        <a href="#" class="footer__link">Faqs</a>
-        <a href="#" class="footer__link">Url</a>
-        <a href="#" class="footer__link">Contacta con Nosotros</a>
+        <router-link to="/questions" class="footer__link">FAQ</router-link>
+        <router-link to="/" class="footer__link">Contacta con Nosotros</router-link>
+       
       </div>
     </div>
 
@@ -97,6 +97,7 @@
   text-align: center;
   
 }
+/* Media queries for small screens */
 /* Media queries para pantallas pequeñas */
 @media screen and (max-width: 720px) {
   .footer__top {
