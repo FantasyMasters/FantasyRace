@@ -28,6 +28,7 @@ const nextStep = () => {
     currentStep.value++;
   }
 };
+
 </script>
 
 <style scoped>
