@@ -42,15 +42,15 @@ const apiUrl = computed(() =>
 
 const { data, isLoading } = useFetchApi(apiUrl);
 
-// Filtrar los constructore
+// Aply filters to the constructors
 const constructors = computed(() => {
   const results = data.value?.RaceTable?.Races[0]?.Results || [];
   const topConstructors = results.slice(0, 20).map((result) => result.Constructor);
   
-  // Eliminamos duplicados en el arreglo
+  // Dele the duplicates
   const uniqueConstructors = Array.from(new Map(topConstructors.map((c) => [c.constructorId, c])).values());
   
-  // Esto hara que aparezcan de manera aleatoria en el grid
+  // Appears randomly in the page
   return uniqueConstructors.sort(() => Math.random() - 0.5);
 });
 

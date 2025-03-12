@@ -35,7 +35,7 @@ const apiUrl = computed(() => selectedYear.value ? `https://api.jolpi.ca/ergast/
 
 const { data, error, isLoading } = useFetchApi(apiUrl);
 
-//las carreras estaran mezcladas de manera aleatoria
+//Appears randomly
 const races = computed(() => {
   const racesArray = data.value?.RaceTable?.Races || [];
   return racesArray.sort(() => Math.random() - 0.5);  

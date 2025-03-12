@@ -52,17 +52,17 @@ const apiUrl = computed(() =>
 
 const { data, isLoading } = useFetchApi(apiUrl);
 
-// Obtener los 3 primeros puestos del podio
+// Three first position in the podium
 const podium = computed(() => {
   return data.value?.RaceTable?.Races[0]?.Results?.slice(0, 3) || [];
 });
 
-// Calcular score basado en las selecciones del usuario
+// Calculates the score
 const calculateScore = () => {
   if (!selectedDriver.value || !selectedConstructor.value || !podium.value.length) return 0;
 
   let score = 0;
-  const points = [25, 18, 15]; // Puntos para 1º, 2º y 3º lugar
+  const points = [25, 18, 15]; // Points for the 1, 2 and 3 positions
 
   podium.value.forEach((result, index) => {
     if (result.Driver.driverId === selectedDriver.value.driverId) {
@@ -79,14 +79,16 @@ const calculateScore = () => {
 const score = computed(() => calculateScore());
 
 // Guardar score en Pinia y localStorage cada vez que cambien los valores relevantes
+//Saves score on Pinia and localStorage
 watch([score, selectedYear, selectedRace, selectedConstructor, selectedDriver], () => {
   store.setScore(score.value);
   
   // 🟢 Agregar los resultados de la carrera al historial del usuario
+  // Insert the results of the races in the user history
   if (podium.value.length) {
-    store.addToUserHistory('races', selectedRace.value.raceName); // Agregar carrera al historial
-    store.addToUserHistory('constructors', selectedConstructor.value.name); // Agregar constructor
-    store.addToUserHistory('drivers', `${selectedDriver.value.givenName} ${selectedDriver.value.familyName}`); // Agregar piloto
+    store.addToUserHistory('races', selectedRace.value.raceName); 
+    store.addToUserHistory('constructors', selectedConstructor.value.name); 
+    store.addToUserHistory('drivers', `${selectedDriver.value.givenName} ${selectedDriver.value.familyName}`); 
     store.addToUserHistory('score', score.value, score.value);
   }
 });
@@ -106,7 +108,7 @@ watch([score, selectedYear, selectedRace, selectedConstructor, selectedDriver], 
   position: relative;
 }
 
-/* Fondo semitransparente detrás de los resultados */
+
 .results::before {
   content: "";
   position: absolute;
@@ -121,8 +123,6 @@ watch([score, selectedYear, selectedRace, selectedConstructor, selectedDriver], 
   opacity: 0.7;
 }
 
-
-/* Títulos */
 .results__title, .results__subtitle, .results__top3 {
   font-size: 3rem;
   margin-bottom: 10px;
@@ -131,7 +131,7 @@ watch([score, selectedYear, selectedRace, selectedConstructor, selectedDriver], 
 }
 
 
-/* Lista de podium */
+
 .results__podium {
   margin-top: 20px;
   font-size: 2rem;
@@ -153,7 +153,7 @@ watch([score, selectedYear, selectedRace, selectedConstructor, selectedDriver], 
   
 }
 
-/* Estilos de carga y error */
+
 .results__loading, .results__error {
   font-size: 2rem;
   font-weight: bold;
@@ -161,7 +161,7 @@ watch([score, selectedYear, selectedRace, selectedConstructor, selectedDriver], 
   margin-top: 20px;
 }
 
-/* Sección de selecciones */
+
 .results__selection {
   margin-top: 20px;
   padding: 15px;
