@@ -1,8 +1,11 @@
 <template>
+  <!-- BANNER & TITLE -->
   <div class="classification-page">
     <h1 class="classification-page__title">Clasificación</h1>
   </div>
 
+  
+  <!-- TABLES -->
   <div class="tables-container">
     <div v-for="(table, index) in tables" :key="index" class="race-table">
       <h2 class="race-table__title">{{ table.title }}</h2>
@@ -10,7 +13,6 @@
         <div class="race-table__header">Posición</div>
         <div class="race-table__header">Nombre</div>
         <div class="race-table__header">Score</div>
-
         <div v-for="(player, playerIndex) in table.players" :key="playerIndex" class="race-table__item">
           <span class="race-table__position">{{ playerIndex + 1 }}</span>
           <span class="race-table__name">{{ player.name }}</span>
@@ -21,12 +23,15 @@
   </div>
 </template>
 
+
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
 
 const tables = ref([]);
 let intervalId = null;
 
+
+//IMORT INFO FROM JSON
 const fetchUsers = async () => {
   try {
     const response = await fetch("http://localhost:3000/users");
@@ -61,9 +66,10 @@ onUnmounted(() => {
 });
 </script>
 
+
 <style scoped>
 
-/* banner y título */
+/* BANNER & TITLE */
 .classification-page {
   background: url('../assets/classificationbanner.jpg') no-repeat center center;
   background-size: cover;
@@ -85,6 +91,7 @@ onUnmounted(() => {
 }
 
 
+/* TABLES */
 .tables-container {
   display: flex;
   flex-direction: row;
@@ -92,10 +99,9 @@ onUnmounted(() => {
   overflow-x: auto;
   justify-content: center;
   gap: 7rem;
-  
-   
- 
 }
+
+
 .race-table {
   background-color: black;
   color: white;
@@ -105,21 +111,24 @@ onUnmounted(() => {
   padding: 2rem;
   height: 40rem;
   margin-top: 3rem;
-  margin-bottom: 3rem;
-
-  
+  margin-bottom: 3rem; 
 }
+
+
 .race-table__title {
   text-align: center;
   font-size: 1.5rem;
   padding-bottom: 1rem;
- 
 }
+
+
 .race-table__grid {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   gap: 8px;
 }
+
+
 .race-table__header {
   font-weight: bold;
   background-color: rgb(255, 0, 0);
@@ -129,9 +138,13 @@ onUnmounted(() => {
   border-radius: 3rem;
   box-shadow: 0 4px 10px aqua;
 }
+
+
 .race-table__item {
   display: contents;
 }
+
+
 .race-table__position,
 .race-table__name,
 .race-table__score {
@@ -140,6 +153,7 @@ onUnmounted(() => {
   border-bottom: 1px solid #e0e0e0;
 }
 
+/*RESPONSIVE*/
 @media (max-width: 1024px) {
   .tables-container {
     flex-direction: column;

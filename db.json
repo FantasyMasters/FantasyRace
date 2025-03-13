@@ -1,6 +1,116 @@
 {
   "users": [
     {
+      "id":"2018",
+      "name": "susana",
+      "lastname":"sanz",
+      "nick":"sue",
+      "age":"20",
+      "country":"España",
+      "email":"suesu@gmail.com",
+      "password":"5544",
+      "profileImage":"/assets/userimage.png",
+      "constructors":[
+        "Williams",
+        "Toro Rosso",
+        "BMW Sauber"
+      ],
+      "drivers":[
+      "Daniel Ricciardo",
+      "Michael Schumacher",
+      "Felipe Massa"
+      ],
+      "races":[
+        "Australian Grand Prix",
+        "Hungarian Grand Prix",
+        "Japanese Grand Prix"
+      ],
+      "years":[
+        2000,
+        2004,
+        2009
+      ],
+      "score":[
+        55,
+        47,
+        30
+      ]
+    },
+    {
+      "id":"678d",
+      "name": "Juan",
+      "lastname": "Gomez",
+      "nick": "Juancho",
+      "age": 30,
+      "country": "Colombia",
+      "email": "juan@gmail.com",
+      "password": "9999",
+      "profileImage": "/assets/userimage.png",
+      "constructors": [
+        "Ferrari",
+        "McLaren",
+        "Williams"
+      ],
+      "drivers": [
+        "Michael Schumacher",
+        "Mika Häkkinen",
+        "George Russell"
+      ],
+      "races": [
+        "Australian Grand Prix",
+        "Spanish Grand Prix",
+        "Hungarian Grand Prix"
+      ],
+      "years": [
+        2000,
+        2000,
+        2019
+      ],
+      "score": [
+        60,
+        68,
+        0
+      ]
+    },
+    {
+      "id": "a1b2",
+      "name": "Maria",
+      "lastname": "motos",
+      "nick": "Mary",
+      "age": 25,
+      "country": "Nicaragua",
+      "email": "nica@gmail.com",
+      "password": "585858",
+      "profileImage": "/assets/userimage.png",
+      "constructors": [
+        "Ferrari",
+        "McLaren",
+        "Toro Rosso"
+      ],
+      "drivers": [
+        "Michael Schumacher",
+        "Mika Häkkinen",
+        "George Russell",
+        "Sébastien Bourdais"
+      ],  
+      "races":[
+        "Hungarian Grand Prix",
+        "Saudi Arabian Grand Prix",
+        "San Marino Grand Prix"
+      ],
+      "years":[
+        2009,
+        2021,
+        2008
+      ],
+      "score":[
+        68,
+        55,
+        30
+      ]
+    },
+
+    {
       "id": "1",
       "name": "John",
       "lastname": "Doe",
@@ -88,6 +198,7 @@
       "password": "1234",
       "profileImage": "@/assets/userimage.png",
       "years": [
+        2008,
         2000
       ],
       "races": [
@@ -196,7 +307,6 @@
       ],
       "drivers": [
         "George Russell",
-        "Jarno Trulli",
         "Jarno Trulli",
         "Felipe Massa"
       ],
