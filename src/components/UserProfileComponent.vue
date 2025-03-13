@@ -80,36 +80,53 @@
 import { computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useF1Store } from '@/store/useF1Store';
-
+// Instancia del store de Pinia para manejar los datos del usuario y su historial
+// Instance of the Pinia store to handle user data and history
 const f1Store = useF1Store();
+
+// Instancia de Vue Router para manejar la navegación entre páginas
+// Vue Router instance to handle navigation between pages
 const router = useRouter();
 
+// Hook `onMounted` se ejecuta cuando el componente se monta en la vista
+// Hook `onMounted` runs when the component is mounted on the view
 onMounted(() => {
+   // Si no hay un usuario en el store, intenta cargarlo desde el localStorage
+   // If there is no user in the store, try to load it from localStorage
   if (!f1Store.user) {
-    const storedUser = localStorage.getItem('user');
+    const storedUser = localStorage.getItem('user'); // Obtiene el usuario almacenado - Gets the stored user
+
     if (storedUser) {
-      const parsedUser = JSON.parse(storedUser);
-      f1Store.setUser(parsedUser);
-      f1Store.loadUserSelections(parsedUser.id);
+      const parsedUser = JSON.parse(storedUser);// Convierte el JSON en un objeto - Converts JSON to an object
+      f1Store.setUser(parsedUser); // Guarda el usuario en el store - save the user in store
+      f1Store.loadUserSelections(parsedUser.id); // Carga las selecciones del usuario desde la API-Load user selections from the API
     }
   }
 });
-
+// Computed property que obtiene el usuario desde el store
+// Computed property that the user gets from the store
 const user = computed(() => f1Store.user);
+
+// Computed property que obtiene el historial del usuario desde el store
+// Computed property that gets the user's history from the store
 const userHistory = computed(() => f1Store.userHistory);
 
+// Computed property que calcula el puntaje total sumando todos los valores en `score`
+// Computed property that calculates the total score by adding all the values ​​in `score`
 const totalScore = computed(() => {
   return userHistory.value.score.reduce((acc, value) => acc + value, 0);
 });
-
+// Función para cerrar sesión
+// Function to log out
 const logout = () => {
-  localStorage.removeItem('user');
-  f1Store.setUser(null);
-  router.push('/');
+  localStorage.removeItem('user');// Elimina el usuario del localStorage - Delete the user from localStorage
+  f1Store.setUser(null);// Resetea el usuario en el store - Reset the user in the store
+  router.push('/');// Redirige a la página de inicio- redirect to home page
 };
-
+// Función para volver a jugar (redirigir al usuario a la vista de selección de año)
+// Playback function (redirect user to the year selection view)
 const playAgain = () => {
-  router.push('/years');
+  router.push('/years');// Navega a la vista de selección de años- Redirect to page years
 };
 
 </script>

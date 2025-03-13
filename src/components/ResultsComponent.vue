@@ -35,39 +35,79 @@
 import { computed, watch } from 'vue';
 import { useF1Store } from '../store/useF1Store';
 import { useFetchApi } from '../composables/useFetchApi';
-
+// Se obtiene el store de Pinia para acceder al estado global
+// Get the Pinia store to access the global state
 const store = useF1Store();
+// Define un evento personalizado "nextStep" para comunicar con el componente padre
+// Define a custom "nextStep" event to communicate with the parent component
 const emit = defineEmits(["nextStep"]);
 
+// Computed properties para obtener los datos seleccionados desde el store
+// Computed properties to get the selected data from the store
+
+// Año seleccionado
+// Selected year
 const selectedYear = computed(() => store.selectedYear);
+// Carrera seleccionada
+// Selected race
 const selectedRace = computed(() => store.selectedRace);
+// Constructor seleccionado
+// Selected constructor
 const selectedConstructor = computed(() => store.selectedConstructor);
+// Piloto seleccionado
+// Selected driver
 const selectedDriver = computed(() => store.selectedDriver);
 
+// Computed property que genera dinámicamente la URL de la API en base a la carrera seleccionada
+// Computed property that dynamically generates the API URL based on the selected race
 const apiUrl = computed(() =>
   selectedRace.value
     ? `https://api.jolpi.ca/ergast/f1/${selectedRace.value.season}/${selectedRace.value.round}/results.json`
     : ''
 );
 
+/**
+ * 🔹 Ejemplo de URL generada si se selecciona la carrera de la temporada 2023, ronda 5:
+ * https://api.jolpi.ca/ergast/f1/2023/5/results.json
+ */
+
+// Llama al composable useFetchApi para hacer la petición a la API y obtener datos de la carrera
+// Call the useFetchApi composable to make the API request and retrieve race data
 const { data, isLoading } = useFetchApi(apiUrl);
-// Tres primeras posiciones en el podio
-// Three first position in the podium
+// Computed property que obtiene los primeros 3 pilotos del podio.
+// Computed property that gets the first 3 drivers on the podium.
 const podium = computed(() => {
   return data.value?.RaceTable?.Races[0]?.Results?.slice(0, 3) || [];
 });
 // Calcular la puntuación segun las selecciones realizadas
 // Calculate score based on user selections
 const calculateScore = () => {
+  /**
+ * Función que calcula la puntuación del usuario basado en sus selecciones y el podio real.
+ * Se asignan puntos si el piloto o el constructor seleccionados coinciden con los del podio.
+ */
+/**
+* Function that calculates the user's score based on their selections and the actual podium finish.
+* Points are awarded if the selected driver or constructor matches the one on the podium.
+*/
   if (!selectedDriver.value || !selectedConstructor.value || !podium.value.length) return 0;
-
+// Si no hay datos suficientes, devuelve 0 puntos
+// If there is not enough data, returns 0 points
   let score = 0;
+  // Puntos asignados a los 3 primeros lugares (según sistema de F1)
+  // Points assigned to the first 3 places (according to F1 system)
   const points = [25, 18, 15]; // Points for the 1, 2 and 3 positions
 
+// Recorre el podio (top 3 posiciones) y compara con las selecciones del usuario
+// Go through the podium (top 3 positions) and compare with the user's selection
   podium.value.forEach((result, index) => {
+       // Si el piloto seleccionado coincide con la posición en el podio, suma puntos
+       // If the selected driver matches the podium position, he/she scores points
     if (result.Driver.driverId === selectedDriver.value.driverId) {
       score += points[index];
     }
+     // Si el constructor seleccionado coincide con la posición en el podio, suma puntos
+     // If the selected builder matches the podium position, it scores points
     if (result.Constructor.constructorId === selectedConstructor.value.constructorId) {
       score += points[index];
     }
@@ -75,14 +115,27 @@ const calculateScore = () => {
 
   return score;
 };
-
+// Computed property que almacena la puntuación calculada
+// Computed property that stores the calculated score
 const score = computed(() => calculateScore());
 
+/**
+ * Se utiliza watch para detectar cambios en las selecciones del usuario y actualizar el historial.
+ * Se ejecuta cada vez que cambia alguno de los siguientes valores:
+ * - score (puntuación calculada)
+ * - selectedYear (año seleccionado)
+ * - selectedRace (carrera seleccionada)
+ * - selectedConstructor (constructor seleccionado)
+ * - selectedDriver (piloto seleccionado)
+ */
 // Guardar score en Pinia y localStorage cada vez que cambien los valores relevantes
 //Saves score on Pinia and localStorage when values change
 watch([score, selectedYear, selectedRace, selectedConstructor, selectedDriver], () => {
+   // Guarda la puntuación en el store de Pinia
+  // Save the score to the Pinia store
   store.setScore(score.value);
-  
+  // Solo actualiza el historial si hay datos en el podio (es decir, si la API ya respondió)
+  // Only update the history if there is data in the podium (i.e. if the API has already responded)
   // 🟢 Agregar los resultados de la carrera al historial del usuario
   // Insert the results of the races in the user history
   if (podium.value.length) {

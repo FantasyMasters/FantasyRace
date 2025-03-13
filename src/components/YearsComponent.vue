@@ -15,18 +15,32 @@
   import { computed } from 'vue';
   import { useF1Store } from '../store/useF1Store';
 
-  
+  // Se obtiene una instancia del store de Pinia para acceder y modificar el estado global
+  // An instance of the Pinia store is obtained to access and modify the global state.
   const store = useF1Store();
+  // Define un evento personalizado "nextStep" que será emitido cuando el usuario seleccione un año
+  // Defines a custom event "nextStep" that will be emitted when the user selects a year
   const emit = defineEmits(["nextStep"]);
-
+  // Se genera un array de años desde 2000 hasta 2025 dinámicamente
+  //An array of years from 2000 to 2025 is dynamically generated
   const years = computed(() => Array.from({ length: 26 }, (_, i) => 2000 + i));
+
+  // Computed property reactiva para gestionar el año seleccionado en el store
+  // Computed property reactive to manage the selected year in the store
   const selectedYear = computed({
+    // Obtiene el año seleccionado desde el store
+    // Get the selected year from the store
     get: () => store.selectedYear,
+    // Establece un nuevo año en el store usando la acción `setYear`
+    // Set a new year in the store using the `setYear` action
     set: (value) => store.setYear(value)
   });
-  
+  // Maneja el cambio de año y emite el evento "nextStep" si hay un año seleccionado
+  // Handles the year change and emits the "nextStep" event if a year is selected
   const handleYearChange = () => {
   if (selectedYear.value) {
+    // Notifica al componente padre que se debe avanzar al siguiente paso
+    // Notify the parent component to move to the next step
     emit("nextStep");  
   }
   };

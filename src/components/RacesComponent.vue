@@ -26,28 +26,43 @@
 import { computed, ref, watch } from 'vue';
 import { useF1Store } from '../store/useF1Store';
 import { useFetchApi } from '../composables/useFetchApi';
-
+  // Se obtiene una instancia del store de Pinia para acceder y modificar el estado global
+  // An instance of the Pinia store is obtained to access and modify the global state.
 const store = useF1Store();
+  // Define un evento personalizado "nextStep" para comunicar con el componente padre
+  // Define a custom "nextStep" event to communicate with the parent component
 const emit = defineEmits(["nextStep"]);
-
+// Computed property para obtener el año seleccionado desde el store
+// Computed property to get the selected year from the store
 const selectedYear = computed(() => store.selectedYear);
+// Computed property para construir dinámicamente la URL de la API en base al año seleccionado
+// Computed property to dynamically build the API URL based on the selected year
 const apiUrl = computed(() => selectedYear.value ? `https://api.jolpi.ca/ergast/f1/${selectedYear.value}.json` : '');
-
+// Llama al composable useFetchApi para hacer la petición a la API y obtener datos
+// Call the useFetchApi composable to make the request to the API and obtain data
 const { data, error, isLoading } = useFetchApi(apiUrl);
 
-//Appears randomly
+
+// Computed property para obtener la lista de carreras del año seleccionado
+// Computed property to get the list of races for the selected year
 const races = computed(() => {
+  // Se accede a los datos de la API, si existen, se extrae la propiedad "Races" del "RaceTable"
+ // Access the data from the API, if it exists, extract the "Races" property from the "RaceTable"
   const racesArray = data.value?.RaceTable?.Races || [];
+  // Se devuelve la lista de carreras en orden aleatorio (random shuffle)
+  // The list of races is returned in random order (random shuffle)
   return racesArray.sort(() => Math.random() - 0.5);  
 });
-
+// Función que se ejecuta cuando el usuario selecciona una carrera
+// Function that is executed when the user selects a race
 const selectRace = (race) => {
-  store.setRace(race);
-  emit("nextStep");
-};
+  store.setRace(race);// Guarda la carrera seleccionada en el store -- Save the selected race to the store
+  emit("nextStep");// Emite el evento "nextStep" para que el componente padre avance a la siguiente vista
+};                 //Emits the "nextStep" event to advance the parent component to the next view
 
+// Se observa cualquier cambio en selectedYear y se muestra una advertencia si no hay un año seleccionado
 watch(selectedYear, (newYear) => {
-  if (!newYear) console.warn('No year selected!');
+  if (!newYear) console.warn('No year selected!'); // Mensaje de advertencia en consola si no hay año seleccionado-Warning message in console if no year is selected
 });
 </script>
 
