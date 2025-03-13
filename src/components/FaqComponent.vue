@@ -1,9 +1,9 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-
+// State to store FAQ
 // Estado para almacenar las preguntas frecuentes
 const faqData = ref([]);
-
+//Load data from json file
 // Cargar los datos desde el archivo JSON
 const fetchFaqData = async () => {
   try {
@@ -19,7 +19,7 @@ onMounted(fetchFaqData);
 
 <template>
   <main class="faq">
-    <!-- Imagen de fondo -->
+    <!-- Imagen de fondo-- background image -->
     <img src="@/assets/f1_2.png" alt="Fondo F1" class="faq__background" />
 
     <section class="faq__container">
@@ -34,7 +34,7 @@ onMounted(fetchFaqData);
 </template>
 
 <style scoped>
-/* Contenedor principal */
+/* Contenedor principal-- Main container */
 .faq {
   position: relative;
   display: flex;
@@ -45,7 +45,7 @@ onMounted(fetchFaqData);
   overflow: hidden;
 }
 
-/* Imagen de fondo */
+/* Imagen de fondo -- background image */
 .faq__background {
   position: absolute;
   top: 0;
@@ -56,7 +56,7 @@ onMounted(fetchFaqData);
   z-index: -1;
 }
 
-/* Caja principal */
+
 .faq__container {
   height: 80%;
   padding: 2rem;
@@ -71,7 +71,7 @@ onMounted(fetchFaqData);
   scrollbar-width: none;
 }
 
-/* Título */
+/* Título -title */
 .faq__title {
   text-align: center;
   font-size: 2rem;
@@ -79,7 +79,7 @@ onMounted(fetchFaqData);
   text-transform: uppercase;
 }
 
-/* Pregunta con efecto de despliegue */
+/* Pregunta con efecto de despliegue -- dropdown effect */
 .faq__item {
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 0.5rem;
@@ -102,12 +102,12 @@ onMounted(fetchFaqData);
   align-items: center;
 }
 
-/* Eliminar el icono por defecto del summary */
+/* Eliminar el icono por defecto del summary -- hide default icon*/
 .faq__question::-webkit-details-marker {
   display: none;
 }
 
-/* Añadir icono de flecha */
+/* Añadir icono de flecha -- add arrow icon*/
 .faq__question::after {
   content: "▼";
   font-size: 1rem;
@@ -118,7 +118,7 @@ onMounted(fetchFaqData);
   transform: rotate(180deg);
 }
 
-/* Respuesta oculta por defecto */
+/* Respuesta oculta por defecto-- answer hide by default */
 .faq__answer {
   font-size: 1rem;
   padding: 0 1rem 1rem;

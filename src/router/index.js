@@ -6,6 +6,8 @@ import GuidesView from '../views/GuidesView.vue';
 import LoginView from '../views/LoginView.vue';
 import UserProfileView from '@/views/UserProfileView.vue';
 import ClassificationView from '@/views/ClassificationView.vue';
+import RankingView from '@/views/RankingView.vue';
+import CrudView from '@/views/CrudView.vue';
 
 
 const routes = [
@@ -15,7 +17,9 @@ const routes = [
   {path: '/guides', component: GuidesView},
   { path: '/login', component: LoginView },
   {path: '/classification', component: ClassificationView},
-  {path: '/user-profile', component: UserProfileView}
+  {path: '/user-profile', component: UserProfileView},
+    {path: '/ranking', component: RankingView},
+  {path: '/crud', component: CrudView}
 
 ];
 

@@ -3,8 +3,8 @@ import axios from 'axios'; //axios is used to send requests to a backend API
 
 export const useF1Store = defineStore('f1', { //These store the user’s selected F1 options.
   state: () => ({                             //Esta tienda guarda información sobre los usuarios y sus selecciones de F1.
-    selectedYear: null,
-    selectedRace: null,
+    selectedYear: null,                       //El objeto state, contiene las variables reactivas que se inicilizan aqui
+    selectedRace: null,                       //The state object contains reactive variables that are initialized here
     selectedConstructor: null,
     selectedDriver: null,
     user: null,

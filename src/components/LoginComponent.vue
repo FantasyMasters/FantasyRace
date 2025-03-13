@@ -68,9 +68,9 @@ const handleLogin = async () => {
         if (response.data.length > 0) {
             const user = response.data.find(u => u.password === password.value);
             if (user) {
-                store.setUser(user); // Guardar el usuario en el store
-                localStorage.setItem('user', JSON.stringify(user)); // Guardar en localStorage
-                router.push('/years'); // Redirigir al perfil
+                store.setUser(user); // Guardar el usuario en el store -- -- Save user in store
+                localStorage.setItem('user', JSON.stringify(user)); // Guardar en localStorage -- -- Save localStorage
+                router.push('/years'); // Redirigir a pagina years, inicio del juego  - Redirect to years page, game start
             } else {
                 errorMessage.value = 'Incorrect password';
             }
@@ -106,7 +106,7 @@ const goHome = () => {
     justify-content: center;
     align-items: center;
     place-items: center;
-    z-index: 10001; /* Para que el contenido del formulario esté encima */
+    z-index: 10001; /* Para que el contenido del formulario esté encima -- To move form content to top*/
 }
 
 .login__container {
@@ -129,7 +129,7 @@ const goHome = () => {
     cursor: pointer;
 }
 
-/* ------------ Elementos del formulario */
+/* ------------ Elementos del formulario - Form elments*/
 .login__logo {
     width: 100%;
     margin-bottom: 20px;

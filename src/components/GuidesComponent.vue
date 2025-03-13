@@ -11,7 +11,7 @@ onMounted(() => {
 
 <template>
   <main class="guides">
-    <!-- Imagen de fondo -->
+    <!-- Imagen de fondo -- Background image-->
     <img src="@/assets/f1_2.png" alt="Fondo F1" class="guides__background"/>
 
     <section class="guides__container">
@@ -26,7 +26,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
-/* Contenedor principal */
+/* Contenedor principal - Main container */
 .guides {
   position: relative;
   display: flex;
@@ -37,7 +37,7 @@ onMounted(() => {
   overflow: hidden;
 }
 
-/* Imagen de fondo */
+/* Imagen de fondo - Background image*/
 .guides__background {
   position: absolute;
   top: 0;
@@ -48,7 +48,7 @@ onMounted(() => {
   z-index: -1;
 }
 
-/* Caja principal */
+
 .guides__container {  
   height: 80%;    
   padding: 2rem;    
@@ -63,7 +63,7 @@ onMounted(() => {
   scrollbar-width: none;
 }
 
-/* Título */
+/* Título - Title*/
 .guides__title {
   text-align: center;
   font-size: 2rem;
@@ -71,7 +71,7 @@ onMounted(() => {
   text-transform: uppercase;
 }
 
-/* Pregunta con efecto de despliegue */
+/* Pregunta con efecto de despliegue - Dropdown effect for answer */
 .guides__item {
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 0.5rem;
@@ -94,12 +94,12 @@ onMounted(() => {
   align-items: center;
 }
 
-/* Eliminar el icono por defecto del summary */
+/* Eliminar el icono por defecto del summary -- Remove default icon */
 .guides__question::-webkit-details-marker {
   display: none;
 }
 
-/* Añadir icono de flecha */
+/* Añadir icono de flecha -- Add arrow icon*/
 .guides__question::after {
   content: "▼";
   font-size: 1rem;
@@ -110,7 +110,7 @@ onMounted(() => {
   transform: rotate(180deg);
 }
 
-/* Respuesta oculta por defecto */
+/* Respuesta oculta por defecto - Answer hidden by default */
 .guides__answer {
   font-size: 1rem;
   padding: 0 1rem 1rem;
